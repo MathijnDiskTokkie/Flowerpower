@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FlowerpowerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="bestelling">
+    <Key>
+      <PropertyRef Name="bestellingid" />
+    </Key>
+    <Property Name="bestellingid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="winkelcode" Type="Int32" />
+    <Property Name="klantcode" Type="Int32" />
+    <Property Name="afgehandelddoor" Type="Int32" />
+    <Property Name="bestellinggeplaatst" Type="DateTime" Precision="0" />
+    <Property Name="klant_klantid" Type="Int32" Nullable="false" />
+    <Property Name="winkel_winkelcode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="klant" Relationship="Self.FK_bestelling_klant" FromRole="bestelling" ToRole="klant" />
+    <NavigationProperty Name="medewerkers" Relationship="Self.FK_bestelling_medewerkers" FromRole="bestelling" ToRole="medewerkers" />
+    <NavigationProperty Name="winkel" Relationship="Self.FK_bestelling_winkel" FromRole="bestelling" ToRole="winkel" />
+    <NavigationProperty Name="winkelmand" Relationship="Self.FK_winkelmand_bestelling" FromRole="bestelling" ToRole="winkelmand" />
+  </EntityType>
+  <EntityType Name="klant">
+    <Key>
+      <PropertyRef Name="klantid" />
+    </Key>
+    <Property Name="naam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="achternaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="straatnaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="postcode" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="tussenvoegsel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="geboortedatum" Type="DateTime" Precision="0" />
+    <Property Name="woonplaats" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="klantid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="bestelling" Relationship="Self.FK_bestelling_klant" FromRole="klant" ToRole="bestelling" />
+  </EntityType>
+  <EntityType Name="medewerkers">
+    <Key>
+      <PropertyRef Name="medewerkerid" />
+    </Key>
+    <Property Name="medewerkerid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="medewerkernaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="medewerkerachternaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="winkelcode" Type="Int32" />
+    <NavigationProperty Name="bestelling" Relationship="Self.FK_bestelling_medewerkers" FromRole="medewerkers" ToRole="bestelling" />
+    <NavigationProperty Name="winkel" Relationship="Self.FK_medewerkers_winkel" FromRole="medewerkers" ToRole="winkel" />
+  </EntityType>
+  <EntityType Name="producten">
+    <Key>
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="productid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productnaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="prijs" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="productomschrijving" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="winkelmand" Relationship="Self.FK_winkelmand_producten" FromRole="producten" ToRole="winkelmand" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="winkel">
+    <Key>
+      <PropertyRef Name="winkelcode" />
+    </Key>
+    <Property Name="winkelcode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="winkelnaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="winkelstraatnaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="winkelpostcode" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="winkelstad" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="winkeltelefoonnummer" Type="Int32" />
+    <Property Name="winkelmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="bestelling" Relationship="Self.FK_bestelling_winkel" FromRole="winkel" ToRole="bestelling" />
+    <NavigationProperty Name="medewerkers" Relationship="Self.FK_medewerkers_winkel" FromRole="winkel" ToRole="medewerkers" />
+  </EntityType>
+  <EntityType Name="winkelmand">
+    <Key>
+      <PropertyRef Name="bestelregelid" />
+    </Key>
+    <Property Name="bestellingid" Type="Int32" Nullable="false" />
+    <Property Name="productid" Type="Int32" />
+    <Property Name="aantal" Type="Int32" />
+    <Property Name="bestelregelid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="bestelling" Relationship="Self.FK_winkelmand_bestelling" FromRole="winkelmand" ToRole="bestelling" />
+    <NavigationProperty Name="producten" Relationship="Self.FK_winkelmand_producten" FromRole="winkelmand" ToRole="producten" />
+  </EntityType>
+  <Association Name="FK_bestelling_klant">
+    <End Role="klant" Type="Self.klant" Multiplicity="1" />
+    <End Role="bestelling" Type="Self.bestelling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="klant">
+        <PropertyRef Name="klantid" />
+      </Principal>
+      <Dependent Role="bestelling">
+        <PropertyRef Name="klant_klantid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bestelling_medewerkers">
+    <End Role="medewerkers" Type="Self.medewerkers" Multiplicity="0..1" />
+    <End Role="bestelling" Type="Self.bestelling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medewerkers">
+        <PropertyRef Name="medewerkerid" />
+      </Principal>
+      <Dependent Role="bestelling">
+        <PropertyRef Name="afgehandelddoor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bestelling_winkel">
+    <End Role="winkel" Type="Self.winkel" Multiplicity="1" />
+    <End Role="bestelling" Type="Self.bestelling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="winkel">
+        <PropertyRef Name="winkelcode" />
+      </Principal>
+      <Dependent Role="bestelling">
+        <PropertyRef Name="winkel_winkelcode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_winkelmand_bestelling">
+    <End Role="bestelling" Type="Self.bestelling" Multiplicity="1" />
+    <End Role="winkelmand" Type="Self.winkelmand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bestelling">
+        <PropertyRef Name="bestellingid" />
+      </Principal>
+      <Dependent Role="winkelmand">
+        <PropertyRef Name="bestellingid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_medewerkers_winkel">
+    <End Role="winkel" Type="Self.winkel" Multiplicity="0..1" />
+    <End Role="medewerkers" Type="Self.medewerkers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="winkel">
+        <PropertyRef Name="winkelcode" />
+      </Principal>
+      <Dependent Role="medewerkers">
+        <PropertyRef Name="winkelcode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_winkelmand_producten">
+    <End Role="producten" Type="Self.producten" Multiplicity="0..1" />
+    <End Role="winkelmand" Type="Self.winkelmand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producten">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="winkelmand">
+        <PropertyRef Name="productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FlowerpowerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="bestelling" EntityType="Self.bestelling" />
+    <EntitySet Name="klant" EntityType="Self.klant" />
+    <EntitySet Name="medewerkers" EntityType="Self.medewerkers" />
+    <EntitySet Name="producten" EntityType="Self.producten" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="winkel" EntityType="Self.winkel" />
+    <EntitySet Name="winkelmand" EntityType="Self.winkelmand" />
+    <AssociationSet Name="FK_bestelling_klant" Association="Self.FK_bestelling_klant">
+      <End Role="klant" EntitySet="klant" />
+      <End Role="bestelling" EntitySet="bestelling" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bestelling_medewerkers" Association="Self.FK_bestelling_medewerkers">
+      <End Role="medewerkers" EntitySet="medewerkers" />
+      <End Role="bestelling" EntitySet="bestelling" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bestelling_winkel" Association="Self.FK_bestelling_winkel">
+      <End Role="winkel" EntitySet="winkel" />
+      <End Role="bestelling" EntitySet="bestelling" />
+    </AssociationSet>
+    <AssociationSet Name="FK_winkelmand_bestelling" Association="Self.FK_winkelmand_bestelling">
+      <End Role="bestelling" EntitySet="bestelling" />
+      <End Role="winkelmand" EntitySet="winkelmand" />
+    </AssociationSet>
+    <AssociationSet Name="FK_medewerkers_winkel" Association="Self.FK_medewerkers_winkel">
+      <End Role="winkel" EntitySet="winkel" />
+      <End Role="medewerkers" EntitySet="medewerkers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_winkelmand_producten" Association="Self.FK_winkelmand_producten">
+      <End Role="producten" EntitySet="producten" />
+      <End Role="winkelmand" EntitySet="winkelmand" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

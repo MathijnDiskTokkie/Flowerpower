@@ -1,0 +1,42 @@
+﻿@model Flowerpower.Models.producten
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>producten</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.productnaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productnaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prijs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prijs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productomschrijving)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productomschrijving)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.productid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
