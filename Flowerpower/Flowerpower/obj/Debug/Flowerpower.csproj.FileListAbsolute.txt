@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\bin\ApplicationInsights.config
 C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\bin\Flowerpower.dll.config
 C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\bin\Flowerpower.dll
@@ -119,3 +120,7 @@ C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flo
 C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.csproj.CopyComplete
 C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.dll
 C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.pdb
+=======
+C:\Users\Piratheepa\Documents\Github\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.csprojAssemblyReference.cache
+C:\Users\Piratheepa\Documents\Github\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.csproj.CoreCompileInputs.cache
+>>>>>>> 19facf587af1db3b0d695555e2ce72c167a48f27
