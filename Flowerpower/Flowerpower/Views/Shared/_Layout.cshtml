@@ -9,6 +9,7 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 
     @*<div>
          <img src="~/Content/Images/logo.png" />
@@ -18,6 +19,29 @@
     @Html.Partial("MenuPartial")
 
 
+=======
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Role Manager", "Index", "Roles")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+>>>>>>> 52e8b341f54155fcc59e6dead1c358979b959d0c
     <div class="container body-content">
         @RenderBody()
         <hr />
