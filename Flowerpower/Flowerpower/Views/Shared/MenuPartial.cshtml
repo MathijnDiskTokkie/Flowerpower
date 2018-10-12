@@ -23,6 +23,10 @@
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 <li>@Html.ActionLink("Boeket", "About", "Home")</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                @if (ViewContext.HttpContext.User.IsInRole("Manager"))
+                {
+                    <li>@Html.ActionLink("Roles", "index", "Roles")</li>
+                }
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
