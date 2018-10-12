@@ -11,17 +11,18 @@
             </button>
         </div>
 
+        <div class="navbar-header pull-left">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                <img src="~/Content/Images/logoo.png" alt="Site Logo" id="site-logo" class="img-responsive" />
+            </a>
+        </div>
+
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 <li>@Html.ActionLink("Boeket", "About", "Home")</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                @if (ViewContext.HttpContext.User.IsInRole("Manager"))
-                {
-                    <li>@Html.ActionLink("Roles", "Index", "Roles")</li>
-                }
-               
             </ul>
             @Html.Partial("_LoginPartial")
         </div>

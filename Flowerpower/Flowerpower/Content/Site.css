@@ -138,3 +138,13 @@ ul.nav.navbar-nav {
 div#flowerpover-div {
     padding-top: 100px;
 }
+
+#site-logo {
+    height: 150px;
+    width: 200px;
+    position: fixed;
+    margin-top: -99px;
+    /* margin-left: 360px; */
+    transform: translateX(-50%);
+    left: 50%;
+}
