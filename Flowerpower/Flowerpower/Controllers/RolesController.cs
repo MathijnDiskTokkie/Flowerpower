@@ -13,7 +13,7 @@ namespace Flowerpower.Controllers
     public class RolesController : Controller
     {
 
-
+        [Authorize(Roles = "Manager")]
         public ActionResult Index()
         {
             // Populate Dropdown Lists
