@@ -11,18 +11,17 @@
             </button>
         </div>
 
-        
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 <li>@Html.ActionLink("Boeket", "About", "Home")</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                <li><p class="site-title">
-                    <a href="@Url.Action("Index", "Home")">
-                        <img src="~/Content/Images/logo.png" alt="" />
-                    </a>
-                </p></li>
+                @if (ViewContext.HttpContext.User.IsInRole("Manager"))
+                {
+                    <li>@Html.ActionLink("Roles", "Index", "Roles")</li>
+                }
+               
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
