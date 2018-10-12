@@ -159,13 +159,13 @@ namespace Flowerpower.Controllers
 
                     klant a = new klant();
                     a.naam = model.naam;
-                    a.naam = model.achternaam;
-                    a.naam = model.straatnaam;
-                    a.naam = model.email;
-                    a.naam = model.Password;
-                    a.naam = model.postcode;
-                    a.naam = model.tussenvoegsel;
-                    a.naam = model.woonplaats;
+                    a.achternaam = model.achternaam;
+                    a.straatnaam = model.straatnaam;
+                    a.email = model.email;
+                    model.Password = model.Password;
+                    a.postcode = model.postcode;
+                    a.tussenvoegsel = model.tussenvoegsel;
+                    a.woonplaats = model.woonplaats;
                     
 
 
