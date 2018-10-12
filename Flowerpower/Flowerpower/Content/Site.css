@@ -142,7 +142,7 @@ div#flowerpover-div {
 #site-logo {
     height: 150px;
     width: 200px;
-    position: fixed;
+    position: absolute;
     margin-top: -99px;
     /* margin-left: 360px; */
     transform: translateX(-50%);
