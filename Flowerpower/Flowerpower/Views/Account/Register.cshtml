@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <div class="form-group">    
+    <div class="form-group">
         @Html.LabelFor(m => m.straatnaam, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.straatnaam, new { @class = "form-control" })
@@ -70,7 +70,30 @@
             @Html.TextBoxFor(m => m.postcode, new { @class = "form-control" })
         </div>
     </div>
-
+    if (ViewContext.HttpContext.User.IsInRole("Manager"))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.medewerkernaam, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.medewerkernaam, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.medewerkerachternaam, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.medewerkerachternaam, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.winkelcode, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.winkelcode, new { @class = "form-control" })
+            </div>
+        </div>
+        @*<div class="form-group">
+            <p>Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")</p>
+        </div>*@
+    }
 
 
     <div class="form-group">
