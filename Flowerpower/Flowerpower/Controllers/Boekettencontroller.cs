@@ -10,17 +10,17 @@ using Flowerpower.Models;
 
 namespace Flowerpower.Controllers
 {
-    public class Boekettencontroller : Controller
+    public class BoekettenController : Controller
     {
         private FlowerpowerEntities db = new FlowerpowerEntities();
 
-        // GET: Boekettencontroller
+        // GET: Boeketten
         public ActionResult Index()
         {
             return View(db.producten.ToList());
         }
 
-        // GET: Boekettencontroller/Details/5
+        // GET: Boeketten/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,18 +35,18 @@ namespace Flowerpower.Controllers
             return View(producten);
         }
 
-        // GET: Boekettencontroller/Create
+        // GET: Boeketten/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Boekettencontroller/Create
+        // POST: Boeketten/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "productid,productnaam,prijs,productomschrijving")] producten producten)
+        public ActionResult Create([Bind(Include = "productid,productnaam,prijs,productomschrijving,gearchiveerd")] producten producten)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace Flowerpower.Controllers
             return View(producten);
         }
 
-        // GET: Boekettencontroller/Edit/5
+        // GET: Boeketten/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,12 +73,12 @@ namespace Flowerpower.Controllers
             return View(producten);
         }
 
-        // POST: Boekettencontroller/Edit/5
+        // POST: Boeketten/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "productid,productnaam,prijs,productomschrijving")] producten producten)
+        public ActionResult Edit([Bind(Include = "productid,productnaam,prijs,productomschrijving,gearchiveerd")] producten producten)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace Flowerpower.Controllers
             return View(producten);
         }
 
-        // GET: Boekettencontroller/Delete/5
+        // GET: Boeketten/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +104,7 @@ namespace Flowerpower.Controllers
             return View(producten);
         }
 
-        // POST: Boekettencontroller/Delete/5
+        // POST: Boeketten/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

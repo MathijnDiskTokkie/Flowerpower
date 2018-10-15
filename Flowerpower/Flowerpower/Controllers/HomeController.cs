@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flowerpower.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,16 @@ namespace Flowerpower.Controllers
 {
     public class HomeController : Controller
     {
+
+        FlowerpowerEntities db = new FlowerpowerEntities();
+
+
         public ActionResult Index()
         {
-            return View();
+
+            List<producten> listboek = new List<producten>();
+            listboek = (from i in db.producten where i.gearchiveerd == true select i).ToList();
+            return View(listboek);
         }
 
         public ActionResult About()

@@ -1,11 +1,14 @@
-﻿@{
+﻿@model List<Flowerpower.Models.producten>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
 
 
 <div class="row" id="columns">
-
+    @foreach (var item in Model)
+    {
     <div class="columtest">
         <div>
             <div class="col-sm-4 col-centered">
@@ -19,19 +22,19 @@
 
                     <div class="type-titel">
                         <div class="et_pb_text_inner">
-                            <h4>Boeket 1</h4>
+                            <h4>@item.productnaam</h4>
                         </div>
                     </div>
 
                     <div class="omschrijving-boeket">
                         <div class="type-boeket-omschrijving">
                             <p style="text-align: center;">
-                                bskkkjsbhjdghjgd
+                                @item.productomschrijving
                             </p>
                         </div>
                     </div>
-
-                    <a href="" class="btn button-boeket" style="color: #000;">Bestel nu vanaf <i class="fas fa-info-circle"></i></a>
+                    
+                    <a href="" class="btn button-boeket" style="color: #000;">Bestel nu vanaf €@item.prijs<i class="fas fa-info-circle"></i></a>
                 </div>
 
             </div>
@@ -39,79 +42,10 @@
         </div>
 
     </div>
+    }
 
 
-    <div class="columtest" >
-        <div>
-            <div class="col-sm-4 col-centered">
-                <div class="colom-1">
-                    <div class="img-boeket1">
-                        <span class="et_pb_image_wrap">
-                            <img src="~/Content/Images/Boeketten/blijaf.jpg" id="col-img" class="img-responsive" data-was-processed="true">
-
-                        </span>
-                    </div>
-
-                    <div class="type-titel">
-                        <div class="et_pb_text_inner">
-                            <h4>Boeket 1</h4>
-                        </div>
-                    </div>
-
-                    <div class="omschrijving-boeket">
-                        <div class="type-boeket-omschrijving">
-                            <p style="text-align: center;">
-                                bskkkjsbhjdghjgd
-                            </p>
-                        </div>
-                    </div>
-
-                    <a href="" class="btn button-boeket" style="color: #000;">Bestel nu vanaf <i class="fas fa-info-circle"></i></a>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="columtest" >
-        <div>
-            <div class="col-sm-4 col-centered">
-                <div class="colom-1">
-
-
-                    <div class="img-boeket1">
-                        <span class="et_pb_image_wrap">
-                            <img src="~/Content/Images/Boeketten/blijaf.jpg" id="col-img" class="img-responsive" data-was-processed="true">
-
-                        </span>
-                    </div>
-                    <div class="type-titel">
-                        <div class="et_pb_text_inner">
-                            <h4>Boeket 1</h4>
-                        </div>
-
-                    </div>
-
-
-                    <div class="omschrijving-boeket">
-                        <div class="type-boeket-omschrijving">
-                            <p style="text-align: center;">
-                                bskkkjsbhjdghjgd
-                            </p>
-                        </div>
-                    </div>
-
-                    <a href="" class="btn button-boeket" style="color: #000;">Bestel nu vanaf <i class="fas fa-info-circle"></i></a>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+   
 
 </div>
 
