@@ -101,6 +101,8 @@ ul.nav.navbar-nav {
 .row {
     margin-right: 0px;
     margin-left: 0px;
+    padding-bottom: 30px;
+    padding-top: 30px;
 }
 
 .container.body-content {
@@ -147,4 +149,17 @@ div#flowerpover-div {
     /* margin-left: 360px; */
     transform: translateX(-50%);
     left: 50%;
+}
+
+
+
+/* ----------------------------------------------- */
+
+.colom-1 {
+    background-color: #88cc00;
+    padding-bottom: 30px;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px rgba(0,0,0,.05);
+    text-align: center;
+    font: 12px/135% arial,helvetica,clean,sans-serif !important;
 }
