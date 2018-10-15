@@ -25,6 +25,7 @@ namespace Flowerpower.Models
         public Nullable<decimal> prijs { get; set; }
         public string productomschrijving { get; set; }
         public Nullable<bool> gearchiveerd { get; set; }
+        public string url { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<winkelmand> winkelmand { get; set; }

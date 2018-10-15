@@ -110,6 +110,7 @@
           <Property Name="prijs" Type="decimal" Precision="18" Scale="2" />
           <Property Name="productomschrijving" Type="varchar" MaxLength="255" />
           <Property Name="gearchiveerd" Type="bit" />
+          <Property Name="url" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -440,6 +441,7 @@
           <Property Name="productomschrijving" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="winkelmand" Relationship="Self.FK_winkelmand_producten" FromRole="producten" ToRole="winkelmand" />
           <Property Name="gearchiveerd" Type="Boolean" />
+          <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -732,6 +734,7 @@
           <EntitySetMapping Name="producten">
             <EntityTypeMapping TypeName="FlowerpowerModel.producten">
               <MappingFragment StoreEntitySet="producten">
+                <ScalarProperty Name="url" ColumnName="url" />
                 <ScalarProperty Name="gearchiveerd" ColumnName="gearchiveerd" />
                 <ScalarProperty Name="productid" ColumnName="productid" />
                 <ScalarProperty Name="productnaam" ColumnName="productnaam" />
