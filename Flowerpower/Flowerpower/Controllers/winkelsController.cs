@@ -10,107 +10,107 @@ using Flowerpower.Models;
 
 namespace Flowerpower.Controllers
 {
-    public class BoekettenController : Controller
+    public class winkelsController : Controller
     {
         private FlowerpowerEntities db = new FlowerpowerEntities();
 
-        // GET: Boeketten
+        // GET: winkels
         public ActionResult Index()
         {
-            return View(db.producten.ToList());
+            return View(db.winkel.ToList());
         }
 
-        // GET: Boeketten/Details/5
+        // GET: winkels/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            producten producten = db.producten.Find(id);
-            if (producten == null)
+            winkel winkel = db.winkel.Find(id);
+            if (winkel == null)
             {
                 return HttpNotFound();
             }
-            return View(producten);
+            return View(winkel);
         }
 
-        // GET: Boeketten/Create
+        // GET: winkels/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Boeketten/Create
+        // POST: winkels/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "productid,productnaam,prijs,productomschrijving,gearchiveerd")] producten producten)
+        public ActionResult Create([Bind(Include = "winkelcode,winkelnaam,winkelstraatnaam,winkelpostcode,winkelstad,winkeltelefoonnummer,winkelmail")] winkel winkel)
         {
             if (ModelState.IsValid)
             {
-                db.producten.Add(producten);
+                db.winkel.Add(winkel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(producten);
+            return View(winkel);
         }
 
-        // GET: Boeketten/Edit/5
+        // GET: winkels/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            producten producten = db.producten.Find(id);
-            if (producten == null)
+            winkel winkel = db.winkel.Find(id);
+            if (winkel == null)
             {
                 return HttpNotFound();
             }
-            return View(producten);
+            return View(winkel);
         }
 
-        // POST: Boeketten/Edit/5
+        // POST: winkels/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "productid,productnaam,prijs,productomschrijving,gearchiveerd")] producten producten)
+        public ActionResult Edit([Bind(Include = "winkelcode,winkelnaam,winkelstraatnaam,winkelpostcode,winkelstad,winkeltelefoonnummer,winkelmail")] winkel winkel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(producten).State = EntityState.Modified;
+                db.Entry(winkel).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(producten);
+            return View(winkel);
         }
 
-        // GET: Boeketten/Delete/5
+        // GET: winkels/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            producten producten = db.producten.Find(id);
-            if (producten == null)
+            winkel winkel = db.winkel.Find(id);
+            if (winkel == null)
             {
                 return HttpNotFound();
             }
-            return View(producten);
+            return View(winkel);
         }
 
-        // POST: Boeketten/Delete/5
+        // POST: winkels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            producten producten = db.producten.Find(id);
-            db.producten.Remove(producten);
+            winkel winkel = db.winkel.Find(id);
+            db.winkel.Remove(winkel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
