@@ -166,11 +166,15 @@ namespace Flowerpower.Controllers
                     a.postcode = model.postcode;
                     a.tussenvoegsel = model.tussenvoegsel;
                     a.woonplaats = model.woonplaats;
-                    
 
+                    medewerkers b = new medewerkers();
+                    b.medewerkernaam = model.medewerkernaam;
+                    b.medewerkerachternaam = model.medewerkerachternaam;
+                    b.winkelcode = model.winkelcode;               
 
 
                     entitie.klant.Add(a);
+                    entitie.medewerkers.Add(b);
                     entitie.SaveChanges();
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

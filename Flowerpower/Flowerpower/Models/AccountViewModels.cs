@@ -103,6 +103,15 @@ namespace Flowerpower.Models
         
         [Display(Name = "Tussenvoegsel")]
         public string tussenvoegsel { get; set; }
+
+        [Display(Name = "medewerkernaam")]
+        public string medewerkernaam { get; set; }
+
+        [Display(Name = "medewerkerachternaam")]
+        public string medewerkerachternaam { get; set; }
+
+        [Display(Name = "winkelcode")]
+        public int winkelcode { get; set; }
     }
 
     public class ResetPasswordViewModel
