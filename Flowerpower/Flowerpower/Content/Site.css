@@ -1,40 +1,165 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    margin-top: 0px;
+    background-color: #e6f7ff;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+/* navabar */
+.navbar-collapse {
+    font: 18px/135% arial,helvetica,clean,sans-serif
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+    .navbar-collapse a {
+        color: #fff;
+    }
+
+li.nav.navbar-nav a:active {
+    background-color: #ff6600;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #fff;
+    color: #990000;
 }
 
-/* Logo */
-
-.logo {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    /*z-index: 1000000;*/
+.navbar-toggle {
+    background-color: #990000;
+    border: none;
 }
 
-.img-logo {
+.navbar {
+    border-radius: 0;
+    margin-bottom: 0px !important;
+}
+
+
+.navbar-toggle .icon-bar {
+    background-color: #FFF;
+}
+
+.navbar .divider-vertical {
+    height: 50px;
+    margin: 0 9px;
+    border-right: 1px solid #005252;
+    border-left: 1px solid #005252;
+}
+
+.nav.no-margin {
+    margin-right: 0;
+}
+
+ul.nav.navbar-nav.navbar-right.no-margin > li > a:hover {
+    background-color: #f2f2f2;
+    color: #000;
+}
+
+ul.nav.navbar-nav.navbar-right.no-margin > li {
+    color: #000 !important;
+}
+
+.navbar-collapse.collapse {
+    background-color: #990000;
+}
+
+
+.navbar-right {
+    margin-right: 0px;
+}
+
+
+/* text-center-nav */
+.navbar.navbar-light {
+    margin-top: -1px;
+}
+
+/*.navbar-collapse {
+    text-align: center;
+}
+
+ul.nav.navbar-nav {
+    float: none;
+    display: inline-block;
+    vertical-align: top;
+}*/
+
+
+/* home-column */
+
+.col-4 {
+    float: left;
+    width: 33.33%;
+    padding: 20px;
+    /*height: 450px;*/
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.container.body-content {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+#columns {
+    background-color: #ffffff;
+}
+
+.col-4 {
+    text-align: center;
+    padding: 20px;
+}
+
+#column-img {
+    padding: 10px;
+}
+
+.flowerpower-div{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.round-img-div {
+    padding: 30px;
+    border: 1px solid #990000;
+    margin: 50px 0 50px 0;
+    box-shadow: 0 2px 3px rgba(0,0,0,.05);
+    text-align: center;
+    background: #fff;
+    color: #990000;
+}
+
+div#flowerpover-div {
+    padding-top: 100px;
+}
+
+#site-logo {
     height: 150px;
+    width: 200px;
+    position: absolute;
+    margin-top: -99px;
+    /* margin-left: 360px; */
     transform: translateX(-50%);
     left: 50%;
-    position: sticky;
+}
+
+
+
+/* ----------------------------------------------- */
+
+.colom-1 {
+    background-color: #88cc00;
+    padding-bottom: 30px;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px rgba(0,0,0,.05);
+    text-align: center;
+    font: 12px/135% arial,helvetica,clean,sans-serif !important;
 }

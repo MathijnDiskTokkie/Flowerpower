@@ -17,6 +17,7 @@ namespace Flowerpower.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        FlowerpowerEntities entitie = new FlowerpowerEntities();
 
         public AccountController()
         {
@@ -151,23 +152,26 @@ namespace Flowerpower.Controllers
         {
             if(ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.email, Email = model.email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
 
-                    Klant.klant = new Klanten();
-                    klant.Voornaam = model.Voornaam;
-                    klant.Achternaam = model.Achternaam;
-                    klant.Adres = model.Adres;
-                    klant.Woonplaats = model.Woonplaats;
-                    klant.Postcode = model.Postcode;
-                    klant.telNr = model.TelNr;
-                    gasten.Email = model.Email;
+                    klant a = new klant();
+                    a.naam = model.naam;
+                    a.achternaam = model.achternaam;
+                    a.straatnaam = model.straatnaam;
+                    a.email = model.email;
+                    model.Password = model.Password;
+                    a.postcode = model.postcode;
+                    a.tussenvoegsel = model.tussenvoegsel;
+                    a.woonplaats = model.woonplaats;
+                    
 
-                    GastenDB.Gasten.Add(gasten);
-                    GastenDB.SaveChanges();
 
+
+                    entitie.klant.Add(a);
+                    entitie.SaveChanges();
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

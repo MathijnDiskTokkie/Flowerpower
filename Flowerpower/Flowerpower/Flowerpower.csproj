@@ -198,66 +198,68 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\bestellingsController.cs" />
+    <Compile Include="Controllers\Boekettencontroller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ProductenController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\WinkelwagenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetRoles.cs">
-      <DependentUpon>ModelFlowerPower.tt</DependentUpon>
+      <DependentUpon>PowerFlowerEntitie.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserClaims.cs">
-      <DependentUpon>ModelFlowerPower.tt</DependentUpon>
+      <DependentUpon>PowerFlowerEntitie.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserLogins.cs">
-      <DependentUpon>ModelFlowerPower.tt</DependentUpon>
+      <DependentUpon>PowerFlowerEntitie.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUsers.cs">
-      <DependentUpon>ModelFlowerPower.tt</DependentUpon>
+      <DependentUpon>PowerFlowerEntitie.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\bestelling.cs">
-      <DependentUpon>ModelFlowerPower.tt</DependentUpon>
+      <DependentUpon>PowerFlowerEntitie.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
-      <DependentUpon>ModelFlowerPower.tt</DependentUpon>
+      <DependentUpon>PowerFlowerEntitie.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\klant.cs">
-      <DependentUpon>ModelFlowerPower.tt</DependentUpon>
+      <DependentUpon>PowerFlowerEntitie.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\medewerkers.cs">
-      <DependentUpon>ModelFlowerPower.tt</DependentUpon>
+      <DependentUpon>PowerFlowerEntitie.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelFlowerPower.Context.cs">
+    <Compile Include="Models\PowerFlowerEntitie.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelFlowerPower.Context.tt</DependentUpon>
+      <DependentUpon>PowerFlowerEntitie.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelFlowerPower.cs">
+    <Compile Include="Models\PowerFlowerEntitie.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelFlowerPower.tt</DependentUpon>
+      <DependentUpon>PowerFlowerEntitie.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelFlowerPower.Designer.cs">
+    <Compile Include="Models\PowerFlowerEntitie.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelFlowerPower.edmx</DependentUpon>
+      <DependentUpon>PowerFlowerEntitie.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\producten.cs">
-      <DependentUpon>ModelFlowerPower.tt</DependentUpon>
+      <DependentUpon>PowerFlowerEntitie.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>ModelFlowerPower.tt</DependentUpon>
+      <DependentUpon>PowerFlowerEntitie.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\winkel.cs">
-      <DependentUpon>ModelFlowerPower.tt</DependentUpon>
+      <DependentUpon>PowerFlowerEntitie.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\winkelmand.cs">
-      <DependentUpon>ModelFlowerPower.tt</DependentUpon>
+      <DependentUpon>PowerFlowerEntitie.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -271,27 +273,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\ModelFlowerPower.Context.tt">
+    <Content Include="Models\PowerFlowerEntitie.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelFlowerPower.edmx</DependentUpon>
-      <LastGenOutput>ModelFlowerPower.Context.cs</LastGenOutput>
+      <DependentUpon>PowerFlowerEntitie.edmx</DependentUpon>
+      <LastGenOutput>PowerFlowerEntitie.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ModelFlowerPower.tt">
+    <Content Include="Models\PowerFlowerEntitie.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelFlowerPower.edmx</DependentUpon>
-      <LastGenOutput>ModelFlowerPower.cs</LastGenOutput>
+      <DependentUpon>PowerFlowerEntitie.edmx</DependentUpon>
+      <LastGenOutput>PowerFlowerEntitie.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\ModelFlowerPower.edmx">
+    <EntityDeploy Include="Models\PowerFlowerEntitie.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelFlowerPower.Designer.cs</LastGenOutput>
+      <LastGenOutput>PowerFlowerEntitie.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ModelFlowerPower.edmx.diagram">
-      <DependentUpon>ModelFlowerPower.edmx</DependentUpon>
+    <Content Include="Models\PowerFlowerEntitie.edmx.diagram">
+      <DependentUpon>PowerFlowerEntitie.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -341,14 +343,20 @@
     <Content Include="Views\Shared\MenuPartial.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
-    <Content Include="Views\Producten\Create.cshtml" />
-    <Content Include="Views\Producten\Delete.cshtml" />
-    <Content Include="Views\Producten\Details.cshtml" />
-    <Content Include="Views\Producten\Edit.cshtml" />
-    <Content Include="Views\Producten\Index.cshtml" />
+    <Content Include="Views\Boeketten\Create.cshtml" />
+    <Content Include="Views\Boeketten\Delete.cshtml" />
+    <Content Include="Views\Boeketten\Details.cshtml" />
+    <Content Include="Views\Boeketten\Edit.cshtml" />
+    <Content Include="Views\Boeketten\Index.cshtml" />
+    <Content Include="Views\bestellings\Create.cshtml" />
+    <Content Include="Views\bestellings\Delete.cshtml" />
+    <Content Include="Views\bestellings\Details.cshtml" />
+    <Content Include="Views\bestellings\Edit.cshtml" />
+    <Content Include="Views\bestellings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Winkelwagen\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
