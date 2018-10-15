@@ -353,10 +353,12 @@
     <Content Include="Views\Boeketten\Details.cshtml" />
     <Content Include="Views\Boeketten\Edit.cshtml" />
     <Content Include="Views\Boeketten\Index.cshtml" />
+    <Content Include="Views\Winkelwagen\Index.cshtml" />
+    <Content Include="Views\Winkelwagen\Afronden.cshtml" />
+    <Content Include="Views\Winkelwagen\PlaatsDatumKiezen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Winkelwagen\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

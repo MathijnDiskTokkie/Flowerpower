@@ -115,7 +115,6 @@ C:\Users\mathi\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\bin\Microsof
 C:\Users\mathi\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\mathi\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\bin\Microsoft.AI.Web.xml
 C:\Users\mathi\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\mathi\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.csprojAssemblyReference.cache
 C:\Users\mathi\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.csproj.CoreCompileInputs.cache
 C:\Users\mathi\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.csproj.CopyComplete
 C:\Users\mathi\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.dll
@@ -364,3 +363,4 @@ C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flo
 C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.csproj.CopyComplete
 C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.dll
 C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.pdb
+C:\Users\mathi\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.csprojAssemblyReference.cache

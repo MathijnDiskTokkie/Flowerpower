@@ -72,7 +72,6 @@
           </Key>
           <Property Name="bestellingid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="winkelcode" Type="int" />
-          <Property Name="klantcode" Type="int" />
           <Property Name="afgehandelddoor" Type="int" />
           <Property Name="bestellinggeplaatst" Type="date" />
           <Property Name="klant_klantid" Type="int" Nullable="false" />
@@ -395,7 +394,6 @@
           </Key>
           <Property Name="bestellingid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="winkelcode" Type="Int32" />
-          <Property Name="klantcode" Type="Int32" />
           <Property Name="afgehandelddoor" Type="Int32" />
           <Property Name="bestellinggeplaatst" Type="DateTime" Precision="0" />
           <Property Name="klant_klantid" Type="Int32" Nullable="false" />
@@ -698,7 +696,6 @@
               <MappingFragment StoreEntitySet="bestelling">
                 <ScalarProperty Name="bestellingid" ColumnName="bestellingid" />
                 <ScalarProperty Name="winkelcode" ColumnName="winkelcode" />
-                <ScalarProperty Name="klantcode" ColumnName="klantcode" />
                 <ScalarProperty Name="afgehandelddoor" ColumnName="afgehandelddoor" />
                 <ScalarProperty Name="bestellinggeplaatst" ColumnName="bestellinggeplaatst" />
                 <ScalarProperty Name="klant_klantid" ColumnName="klant_klantid" />

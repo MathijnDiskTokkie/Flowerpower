@@ -67,7 +67,6 @@
     </Key>
     <Property Name="bestellingid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="winkelcode" Type="int" />
-    <Property Name="klantcode" Type="int" />
     <Property Name="afgehandelddoor" Type="int" />
     <Property Name="bestellinggeplaatst" Type="date" />
     <Property Name="klant_klantid" Type="int" Nullable="false" />

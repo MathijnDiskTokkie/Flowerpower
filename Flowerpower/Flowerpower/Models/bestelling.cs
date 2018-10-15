@@ -22,7 +22,6 @@ namespace Flowerpower.Models
     
         public int bestellingid { get; set; }
         public Nullable<int> winkelcode { get; set; }
-        public Nullable<int> klantcode { get; set; }
         public Nullable<int> afgehandelddoor { get; set; }
         public Nullable<System.DateTime> bestellinggeplaatst { get; set; }
         public int klant_klantid { get; set; }
