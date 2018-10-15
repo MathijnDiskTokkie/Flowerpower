@@ -26,6 +26,7 @@
                 @if (ViewContext.HttpContext.User.IsInRole("Manager"))
                 {
                     <li>@Html.ActionLink("Roles", "index", "Roles")</li>
+                    <li>@Html.ActionLink("Winkels", "index", "Winkels")</li>
                 }
             </ul>
             @Html.Partial("_LoginPartial")

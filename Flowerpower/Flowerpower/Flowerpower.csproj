@@ -203,6 +203,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\winkelsController.cs" />
     <Compile Include="Controllers\WinkelwagenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -353,6 +354,11 @@
     <Content Include="Views\bestellings\Details.cshtml" />
     <Content Include="Views\bestellings\Edit.cshtml" />
     <Content Include="Views\bestellings\Index.cshtml" />
+    <Content Include="Views\winkels\Create.cshtml" />
+    <Content Include="Views\winkels\Delete.cshtml" />
+    <Content Include="Views\winkels\Details.cshtml" />
+    <Content Include="Views\winkels\Edit.cshtml" />
+    <Content Include="Views\winkels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
