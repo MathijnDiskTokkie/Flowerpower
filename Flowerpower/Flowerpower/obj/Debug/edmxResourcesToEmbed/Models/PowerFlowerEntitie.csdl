@@ -65,7 +65,6 @@
     </Key>
     <Property Name="bestellingid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="winkelcode" Type="Int32" />
-    <Property Name="klantcode" Type="Int32" />
     <Property Name="afgehandelddoor" Type="Int32" />
     <Property Name="bestellinggeplaatst" Type="DateTime" Precision="0" />
     <Property Name="klant_klantid" Type="Int32" Nullable="false" />

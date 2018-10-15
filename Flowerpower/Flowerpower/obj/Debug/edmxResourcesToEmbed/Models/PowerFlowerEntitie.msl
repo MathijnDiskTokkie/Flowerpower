@@ -61,7 +61,6 @@
         <MappingFragment StoreEntitySet="bestelling">
           <ScalarProperty Name="bestellingid" ColumnName="bestellingid" />
           <ScalarProperty Name="winkelcode" ColumnName="winkelcode" />
-          <ScalarProperty Name="klantcode" ColumnName="klantcode" />
           <ScalarProperty Name="afgehandelddoor" ColumnName="afgehandelddoor" />
           <ScalarProperty Name="bestellinggeplaatst" ColumnName="bestellinggeplaatst" />
           <ScalarProperty Name="klant_klantid" ColumnName="klant_klantid" />

@@ -1,0 +1,59 @@
+﻿@model List<Flowerpower.Models.winkelmand>
+
+
+@{
+    ViewBag.Title = "Winkelwagen";
+}
+
+<h2>Winkelwagen</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table">
+            <tr>
+                <th>item</th>
+
+                <th></th>
+
+                <th>Prijs</th>
+
+                <th>Aantal</th>
+
+                <th>Subtotaal</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td></td>
+                    <td>@item.producten.productomschrijving</td>
+                    <td>@item.producten.prijs</td>
+                    <td>@item.aantal</td>
+                    <td>@(item.aantal * item.producten.prijs)</td>
+                </tr>
+            }
+
+            <tr>
+                <td><h3>TOTAAL</h3></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><h3>€2000</h3></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="row" style="margin-top: 20px;">
+
+    <div class="col-sm-6">
+
+
+
+    </div>
+    <div class="col-sm-6">
+
+        <a href="@Url.Action("PlaatsDatumKiezen", "Winkelwagen" )"><button type="button" class="btn btn-success" style="float: right;">Afronden</button></a>
+
+
+    </div>
+
+
