@@ -167,14 +167,14 @@ namespace Flowerpower.Controllers
                     a.tussenvoegsel = model.tussenvoegsel;
                     a.woonplaats = model.woonplaats;
 
-                    medewerkers b = new medewerkers();
-                    b.medewerkernaam = model.medewerkernaam;
-                    b.medewerkerachternaam = model.medewerkerachternaam;
-                    b.winkelcode = model.winkelcode;               
+                    //medewerkers b = new medewerkers();
+                    //b.medewerkernaam = model.medewerkernaam;
+                    //b.medewerkerachternaam = model.medewerkerachternaam;
+                    //b.winkelcode = model.winkelcode;               
 
 
                     entitie.klant.Add(a);
-                    entitie.medewerkers.Add(b);
+                    //entitie.medewerkers.Add(b);
                     entitie.SaveChanges();
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -410,6 +410,16 @@ namespace Flowerpower.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+
+
+            if (Request.Cookies["Winkelmand"] != null)
+            {
+
+                var c = new HttpCookie("Winkelmand");
+                c.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(c);
+            }
+
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
