@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using System.Web.Helpers;
 
 [assembly: OwinStartupAttribute(typeof(Flowerpower.Startup))]
 namespace Flowerpower
@@ -9,6 +10,7 @@ namespace Flowerpower
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            AntiForgeryConfig.SuppressXFrameOptionsHeader = true;
         }
     }
 }

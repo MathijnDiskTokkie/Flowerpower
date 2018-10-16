@@ -238,6 +238,7 @@
     <Compile Include="Models\medewerkers.cs">
       <DependentUpon>PowerFlowerEntitie.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PlaatsDatumModel.cs" />
     <Compile Include="Models\PowerFlowerEntitie.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

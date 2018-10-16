@@ -51,7 +51,7 @@
     </div>
     <div class="col-sm-6">
 
-        <a href="@Url.Action("PlaatsDatumKiezen", "Winkelwagen" )"><button type="button" class="btn btn-success" style="float: right;">Afronden</button></a>
+        <a href="@Url.Action("PlaatsDatumKiezen", "Winkelwagen", new { bestelid = Model.FirstOrDefault().bestellingid }, null)"><button type="button" class="btn btn-success" style="float: right;">Afronden</button></a>
 
 
     </div>
