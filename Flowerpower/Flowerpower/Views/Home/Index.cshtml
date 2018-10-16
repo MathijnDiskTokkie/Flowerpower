@@ -33,8 +33,11 @@
                             </p>
                         </div>
                     </div>
+
+
+
                     @Html.ActionLink("Index", "Index", "Winkelwagen", new { productid = item.productid, winkelid = 1 }, null)
-                    <a href="" class="btn button-boeket" style="color: #000;">Bestel nu vanaf €@item.prijs<i class="fas fa-info-circle"></i></a>
+                    <a class="btn btn-success" style="color: #000;"><i class="fas fa-shopping-cart"></i> Bestel nu vanaf €@item.prijs</a>
                 </div>
 
             </div>
@@ -43,9 +46,6 @@
 
     </div>
     }
-
-
-   
 
 </div>
 

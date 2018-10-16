@@ -150,32 +150,49 @@ namespace Flowerpower.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.email, Email = model.email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    if (User.IsInRole("Manager"))
+                    {
+                        klant a = new klant();
+                        a.naam = model.naam;
+                        a.achternaam = model.achternaam;
+                        a.straatnaam = model.straatnaam;
+                        a.email = model.email;
+                        model.Password = model.Password;
+                        a.postcode = model.postcode;
+                        a.tussenvoegsel = model.tussenvoegsel;
+                        a.woonplaats = model.woonplaats;
 
-                    klant a = new klant();
-                    a.naam = model.naam;
-                    a.achternaam = model.achternaam;
-                    a.straatnaam = model.straatnaam;
-                    a.email = model.email;
-                    model.Password = model.Password;
-                    a.postcode = model.postcode;
-                    a.tussenvoegsel = model.tussenvoegsel;
-                    a.woonplaats = model.woonplaats;
+                        medewerkers b = new medewerkers();
+                        b.medewerkernaam = model.medewerkernaam;
+                        b.medewerkerachternaam = model.medewerkerachternaam;
+                        b.winkelcode = model.winkelcode;
+                        entitie.klant.Add(a);
+                        entitie.medewerkers.Add(b);
+                        entitie.SaveChanges();
+                    }
+                    else
+                    {
+                        klant a = new klant();
+                        a.naam = model.naam;
+                        a.achternaam = model.achternaam;
+                        a.straatnaam = model.straatnaam;
+                        a.email = model.email;
+                        model.Password = model.Password;
+                        a.postcode = model.postcode;
+                        a.tussenvoegsel = model.tussenvoegsel;
+                        a.woonplaats = model.woonplaats;
 
-                    //medewerkers b = new medewerkers();
-                    //b.medewerkernaam = model.medewerkernaam;
-                    //b.medewerkerachternaam = model.medewerkerachternaam;
-                    //b.winkelcode = model.winkelcode;               
+                        entitie.klant.Add(a);
+                        entitie.SaveChanges();
+                    }
 
 
-                    entitie.klant.Add(a);
-                    //entitie.medewerkers.Add(b);
-                    entitie.SaveChanges();
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
