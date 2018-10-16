@@ -199,11 +199,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\bestellingsController.cs" />
-    <Compile Include="Controllers\Boekettencontroller.cs" />
+    <Compile Include="Controllers\BoekettenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
-    <Compile Include="Controllers\winkelsController.cs" />
     <Compile Include="Controllers\WinkelwagenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -344,24 +343,22 @@
     <Content Include="Views\Shared\MenuPartial.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
-    <Content Include="Views\Boeketten\Create.cshtml" />
-    <Content Include="Views\Boeketten\Delete.cshtml" />
-    <Content Include="Views\Boeketten\Details.cshtml" />
-    <Content Include="Views\Boeketten\Edit.cshtml" />
-    <Content Include="Views\Boeketten\Index.cshtml" />
     <Content Include="Views\bestellings\Create.cshtml" />
     <Content Include="Views\bestellings\Delete.cshtml" />
     <Content Include="Views\bestellings\Details.cshtml" />
     <Content Include="Views\bestellings\Edit.cshtml" />
     <Content Include="Views\bestellings\Index.cshtml" />
-    <Content Include="Views\winkels\Create.cshtml" />
-    <Content Include="Views\winkels\Delete.cshtml" />
-    <Content Include="Views\winkels\Edit.cshtml" />
-    <Content Include="Views\winkels\Index.cshtml" />
+    <Content Include="Views\Boeketten\Create.cshtml" />
+    <Content Include="Views\Boeketten\Delete.cshtml" />
+    <Content Include="Views\Boeketten\Details.cshtml" />
+    <Content Include="Views\Boeketten\Edit.cshtml" />
+    <Content Include="Views\Boeketten\Index.cshtml" />
+    <Content Include="Views\Winkelwagen\Index.cshtml" />
+    <Content Include="Views\Winkelwagen\Afronden.cshtml" />
+    <Content Include="Views\Winkelwagen\PlaatsDatumKiezen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Winkelwagen\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

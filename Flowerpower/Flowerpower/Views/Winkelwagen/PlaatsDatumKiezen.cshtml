@@ -1,0 +1,19 @@
+﻿@model Flowerpower.Models.bestelling
+
+@{
+    ViewBag.Title = "PlaatsDatumKiezen";
+}
+
+<h2>PlaatsDatumKiezen</h2>
+
+< <div class="col-sm-4">
+    <h4 style="color: black">Wanneer wilt U uw bestelling ophalen</h4>
+
+    <div>
+        @Html.EditorFor(modeld => modeld.bestellinggeplaatst, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+        @Html.ValidationMessageFor(modeld => modeld.bestellinggeplaatst, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="col-sm-4">@Html.DropDownList("winkelcode", (List<winkel>)ViewBag.winkelcode, "--Select One--") </div>
+
