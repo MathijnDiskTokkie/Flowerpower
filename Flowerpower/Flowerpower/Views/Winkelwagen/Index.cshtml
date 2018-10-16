@@ -11,9 +11,9 @@
     <div class="col-sm-12">
         <table class="table">
             <tr>
-                <th>item</th>
+                <th>Item</th>
 
-                <th></th>
+                <th>Omschrijving</th>
 
                 <th>Prijs</th>
 
@@ -24,10 +24,10 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td></td>
+                    <td>@item.producten.productnaam</td>
                     <td>@item.producten.productomschrijving</td>
                     <td>@item.producten.prijs</td>
-                    <td>@item.aantal</td>
+                    <td> @item.aantal</td>
                     <td>@(item.aantal * item.producten.prijs)</td>
                 </tr>
             }
@@ -51,9 +51,10 @@
     </div>
     <div class="col-sm-6">
 
-        <a href="@Url.Action("PlaatsDatumKiezen", "Winkelwagen" )"><button type="button" class="btn btn-success" style="float: right;">Afronden</button></a>
+        <a href="@Url.Action("PlaatsDatumKiezen", "Winkelwagen", new { bestelid = Model.FirstOrDefault().bestellingid }, null)"><button type="button" class="btn btn-success" style="float: right;">Afronden</button></a>
 
 
     </div>
+</div>
 
 

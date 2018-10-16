@@ -33,8 +33,30 @@
                             </p>
                         </div>
                     </div>
-                    @Html.ActionLink("Index", "Index", "Winkelwagen", new { productid = item.productid, winkelid = 1 }, null)
-                    <a href="" class="btn button-boeket" style="color: #000;">Bestel nu vanaf €@item.prijs<i class="fas fa-info-circle"></i></a>
+
+                    <div>
+                        <div class="boeket-prijs">
+                            <p style="text-align: center;">
+                               € @item.prijs
+                            </p>
+
+                        </div>
+                    </div>
+                    <div>
+                        <div class="aantal-bloemen">
+                            @*<form action="/action_page.php">
+                <input type="number" name="quantity" min="0" max="25">
+            </form>*@
+                        </div>
+                    </div>
+
+
+                    <a class="btn btn-warning fas fa-shopping-cart " style="color: #fff;"
+
+                      @Html.ActionLink(" winkelwagen", "Index", "Winkelwagen", new { productid = item.productid, winkelid = 1 }, null)
+
+
+                      @*<a class="btn btn-success" style="color: #000;"><i class="fas fa-shopping-cart"></i> Bestel nu vanaf €@item.prijs</a>*@
                 </div>
 
             </div>
@@ -43,9 +65,6 @@
 
     </div>
     }
-
-
-   
 
 </div>
 

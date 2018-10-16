@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Flowerpower.Models;
+
 
 namespace FlowerPower.Controllers
 {
@@ -13,12 +15,11 @@ namespace FlowerPower.Controllers
 
         //private List<winkelmand> shoppingCartList = new List<winkelmand>();
 
+      
+
         // GET: Cart
         public ActionResult Index(int productid , int winkelid)
         {
-
-            
-
             int klantid = (from i in db.klant where i.email == User.Identity.Name select i.klantid).FirstOrDefault();
 
 
@@ -66,6 +67,7 @@ namespace FlowerPower.Controllers
                 bes.winkel_winkelcode = winkelid;
                 bes.winkelcode = winkelid;
                 bes.klant_klantid = klantid;
+                bes.bestellinggeplaatst = DateTime.Today;
                 db.bestelling.Add(bes);
                 db.SaveChanges();
 
@@ -116,26 +118,98 @@ namespace FlowerPower.Controllers
 
 
 
-        public ActionResult PlaatsDatumKiezen() {
-            return View();
+        public ActionResult PlaatsDatumKiezen(int bestelid) {
 
+            PlaatsDatumModel model = new PlaatsDatumModel();
+            var bestelling = from i in db.bestelling where i.bestellingid == bestelid select i;
+            model.bestellingid = bestelling.FirstOrDefault().bestellingid;
+            model.winkels = PopulateWinkels();
+
+            return View(model);
+
+        }
+
+        [HttpPost]
+        public ActionResult PlaatsDatumKiezen(PlaatsDatumModel model) {
+
+            //update
+            
+
+            model.winkels = PopulateWinkels();
+            var selectedItem = model.winkels.Find(p => p.Value == model.Winkelcode.ToString());
+            if (selectedItem != null)
+            {
+                selectedItem.Selected = true;
+
+
+                var bestelling = (from i in db.bestelling where i.bestellingid == model.bestellingid select i).FirstOrDefault();
+                bestelling.bestellinggeplaatst = model.datumgekozen;
+                bestelling.winkelcode = model.Winkelcode;
+                db.SaveChanges();
+
+                return RedirectToAction("Afronden", "Winkelwagen", new { bestelid = bestelling.bestellingid });
+
+
+
+            }
+
+            return View(model);
+        }
+
+
+        public ActionResult Afronden(int bestelid)
+        {
+            try
+            {
+                var bestelling = (from i in db.bestelling where i.bestellingid == bestelid select i).FirstOrDefault();
+
+                if (Request.Cookies["Winkelmand"] != null)
+                {
+
+                    var c = new HttpCookie("Winkelmand");
+                    c.Expires = DateTime.Now.AddDays(-1);
+                    Response.Cookies.Add(c);
+                }
+                // factuur uitdraaien
+
+                Flowerpower.Functions.Factuur factuur = new Flowerpower.Functions.Factuur();
+                factuur.GenerateInvoice(bestelling);
+             
+
+                return View((from i in db.bestelling where i.bestellingid == bestelid select i).FirstOrDefault());
+
+                
+
+            }
+            catch (Exception ex) {
+
+                return View();
+            }
         }
 
 
 
-        public ActionResult Afronden(DateTime gekozen)
-        {
-            HttpCookie cookie = HttpContext.Request.Cookies.Get("Winkelmand");
-            int bestellingid = Convert.ToInt16(cookie.Value);
+   
+
+        public List<SelectListItem> PopulateWinkels() {
+
+            List<SelectListItem> item = new List<SelectListItem>();
+            var winkels = (from i in db.winkel select i).ToList();
+
+            foreach (var its in winkels) {
+
+                item.Add(new SelectListItem {
+
+                    Text = its.winkelstad,
+                    Value = its.winkelcode.ToString()
+                    
 
 
+                });
+            }
 
+            return item;
 
-
-            HttpContext.Response.Cookies.Remove("Winkelwagen");
-
-
-            return View();
         }
 
 
