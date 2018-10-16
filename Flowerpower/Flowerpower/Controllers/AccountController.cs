@@ -410,6 +410,16 @@ namespace Flowerpower.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+
+
+            if (Request.Cookies["Winkelmand"] != null)
+            {
+
+                var c = new HttpCookie("Winkelmand");
+                c.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(c);
+            }
+
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }

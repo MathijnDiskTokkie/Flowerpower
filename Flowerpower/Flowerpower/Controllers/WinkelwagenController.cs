@@ -82,13 +82,36 @@ namespace FlowerPower.Controllers
                 cookie1.Value = ""+bes.bestellingid; // bestelling id
                 HttpContext.Response.SetCookie(cookie1);
 
+                List<winkelmand> winkelwagen = (from i in db.winkelmand where i.bestellingid == bes.bestellingid select i).ToList();
+
+                foreach (var item in winkelwagen) {
+
+                    item.producten = (from i in db.producten where i.productid == item.productid select i).FirstOrDefault();
+                }
+
+
+
+                return View(winkelwagen);
+
+
+            }
+            if (cookie != null)
+            {
+                int bestllj = Convert.ToInt16(cookie.Value);
+                List<winkelmand> winkelwagen = (from i in db.winkelmand where i.bestellingid == bestllj select i).ToList();
+
+                foreach (var item in winkelwagen)
+                {
+
+                    item.producten = (from i in db.producten where i.productid == item.productid select i).FirstOrDefault();
+                }
+
+                return View(winkelwagen);
 
             }
 
-            int bestllj = Convert.ToInt16(cookie.Value);
-            List<winkelmand> winkelwagen = (from i in db.winkelmand where i.bestellingid == bestllj select i).ToList();
-
-            return View(winkelwagen);
+            return null;
+            
         }
 
 
