@@ -117,25 +117,41 @@ namespace FlowerPower.Controllers
 
 
         public ActionResult PlaatsDatumKiezen() {
+
+            ViewBag.winkel = (from i in db.winkel select i).Select(x => new SelectListItem { Text = x.winkelstad, Value = x.winkelcode.ToString() });
+
             return View();
 
         }
 
 
 
-        public ActionResult Afronden(DateTime gekozen)
+        public ActionResult Afronden(DateTime gekozen, int winkelid)
         {
             HttpCookie cookie = HttpContext.Request.Cookies.Get("Winkelmand");
-            int bestellingid = Convert.ToInt16(cookie.Value);
+
+            try
+            {
+                int bestellingid = Convert.ToInt16(cookie.Value);
 
 
 
 
 
-            HttpContext.Response.Cookies.Remove("Winkelwagen");
 
+                if (Request.Cookies["Winkelmand"] != null)
+                {
 
-            return View();
+                    var c = new HttpCookie("Winkelmand");
+                    c.Expires = DateTime.Now.AddDays(-1);
+                    Response.Cookies.Add(c);
+                }
+                return View();
+            }
+            catch (Exception ex) {
+
+                return View();
+            }
         }
 
 
