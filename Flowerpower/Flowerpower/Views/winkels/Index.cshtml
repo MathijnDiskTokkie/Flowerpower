@@ -29,6 +29,9 @@
         <th>
             @Html.DisplayNameFor(model => model.winkelmail)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.winkelactief)
+        </th>
         <th></th>
     </tr>
 
@@ -51,6 +54,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.winkelmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.winkelactief)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.winkelcode }) |
