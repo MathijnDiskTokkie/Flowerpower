@@ -54,15 +54,15 @@ namespace Flowerpower
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+              appId: "328911617890326",
+              appSecret: "6b6998d2e893f343b7d9a384a3d2e47a");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
-        }
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "685808206282-ucqmsfcvt37emfna7kn2ivfcmgh6d3vp.apps.googleusercontent.com",
+                ClientSecret = "Qdjn-wQw3G1Jtj9AS7QZxJyF"
+            });
+            }
     }
 }
