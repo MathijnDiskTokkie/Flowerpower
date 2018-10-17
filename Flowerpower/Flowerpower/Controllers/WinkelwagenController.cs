@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Flowerpower.Models;
@@ -154,6 +155,13 @@ namespace FlowerPower.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            winkelmand winkelmand = new winkelmand();
+            winkelmand.Deleteproduct(id);
+            return RedirectToAction("Winkelwagen");
+        }
 
     }
 }

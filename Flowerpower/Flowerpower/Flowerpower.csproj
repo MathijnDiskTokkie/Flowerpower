@@ -360,6 +360,7 @@
     <Content Include="Views\Winkelwagen\Index.cshtml" />
     <Content Include="Views\Winkelwagen\Afronden.cshtml" />
     <Content Include="Views\Winkelwagen\PlaatsDatumKiezen.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

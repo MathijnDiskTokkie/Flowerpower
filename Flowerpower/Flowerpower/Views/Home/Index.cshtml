@@ -9,73 +9,61 @@
 <div class="row" id="columns">
     @foreach (var item in Model)
     {
-    <div class="columtest">
-        <div>
-            <div class="col-sm-4 col-centered">
-                <div class="colom-1">
-                    <div class="img-boeket1">
-                        <span class="et_pb_image_wrap">
-                            <img src="~/Content/Images/Boeketten/blijaf.jpg" id="col-img" class="img-responsive" data-was-processed="true">
+        <div class="columtest">
+            <div>
+                <div class="col-sm-4 col-centered">
+                    <div class="colom-1">
+                        <div class="img-boeket1">
+                            <span class="et_pb_image_wrap">
+                                <img src="~/Content/Images/Boeketten/blijaf.jpg" id="col-img" class="img-responsive" data-was-processed="true">
 
-                        </span>
-                    </div>
-
-                    <div class="type-titel">
-                        <div class="et_pb_text_inner">
-                            <h4>@item.productnaam</h4>
+                            </span>
                         </div>
-                    </div>
 
-                    <div class="omschrijving-boeket">
-                        <div class="type-boeket-omschrijving">
-                            <p style="text-align: center;">
-                                @item.productomschrijving.FirstOrDefault()
-                            </p>
+                        <div class="type-titel">
+                            <div class="et_pb_text_inner">
+                                <h4>@item.productnaam</h4>
+                            </div>
                         </div>
-                    </div>
 
-                    <div>
-                        <div class="boeket-prijs">
-                            <p style="text-align: center;">
-                               € @item.prijs
-                            </p>
-
+                        <div class="omschrijving-boeket">
+                            <div class="type-boeket-omschrijving">
+                                <p style="text-align: center;">
+                                    @item.productomschrijving.FirstOrDefault()
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="aantal-bloemen">
-                            @*<form action="/action_page.php">
-                <input type="number" name="quantity" min="0" max="25">
-            </form>*@
+
+                        <div>
+                            <div class="boeket-prijs">
+                                <p style="text-align: center;">
+                                    € @item.prijs
+                                </p>
+
+                            </div>
                         </div>
+                        <div>
+                            <div class="aantal-bloemen">
+                                @*<form action="/action_page.php">
+                                        <input type="number" name="quantity" min="0" max="25">
+                                    </form>*@
+                            </div>
+                        </div>
+
+
+                        <a class="btn btn-warning fas fa-shopping-cart " style="color: #fff;"
+                           @Html.ActionLink(" winkelwagen", "Index", "Winkelwagen", new { productid = item.productid, winkelid = 1 }, null)
+                           @*<a class="btn btn-success" style="color: #000;"><i class="fas fa-shopping-cart"></i> Bestel nu vanaf €@item.prijs</a>*@
                     </div>
 
-
-                    <a class="btn btn-warning fas fa-shopping-cart " style="color: #fff;"
-
-                      @Html.ActionLink(" winkelwagen", "Index", "Winkelwagen", new { productid = item.productid, winkelid = 1 }, null)
-
-
-                      @*<a class="btn btn-success" style="color: #000;"><i class="fas fa-shopping-cart"></i> Bestel nu vanaf €@item.prijs</a>*@
                 </div>
 
             </div>
 
         </div>
-
-    </div>
     }
 
 </div>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -88,20 +76,20 @@
 
             <div class="col-sm-6" style="text-align: center;" id="flowerpover-div">
                 <h2 style="font-family: Courgette, cursive; font-size: 50px;">FlowerPower</h2><br />
-                                    <p>
-                                        Welkom op de site van FlowerpPower<br/>
-                                        Sinds 1994 is FlowerPower de duren open gemaakt in het hartje van Amsterdam.
-                                    </p>
+                <p>
+                    Welkom op de site van FlowerpPower<br />
+                    Sinds 1994 is FlowerPower de duren open gemaakt in het hartje van Amsterdam.
+                </p>
 
-                                    <p>
-                                        Door de jaren heen is FlowerPower uitgegroeid tot een keten van bloemenwinkels in Amsterdam, Den Haag, Rotterdam en Utrecht.<br/>
-                                        In de toekomst verwacht FlowerPower meerdere bloemenwinkels te openen in de randstad.
-                                    </p>
+                <p>
+                    Door de jaren heen is FlowerPower uitgegroeid tot een keten van bloemenwinkels in Amsterdam, Den Haag, Rotterdam en Utrecht.<br />
+                    In de toekomst verwacht FlowerPower meerdere bloemenwinkels te openen in de randstad.
+                </p>
 
-                                    <p>
-                                        U kunt bij ons terecht voor al uw wensen op het gebied van bloemsierkunst.<br/>
-                                        Met een gemotiveerd team staan wij garant voor een goede service voor onze klanten!
-                                    </p>
+                <p>
+                    U kunt bij ons terecht voor al uw wensen op het gebied van bloemsierkunst.<br />
+                    Met een gemotiveerd team staan wij garant voor een goede service voor onze klanten!
+                </p>
             </div>
         </div>
     </div>
