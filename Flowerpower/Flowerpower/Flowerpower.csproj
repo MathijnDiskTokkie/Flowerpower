@@ -367,6 +367,7 @@
     <Content Include="Views\winkels\Edit.cshtml" />
     <Content Include="Views\winkels\Index.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Winkelwagen\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
