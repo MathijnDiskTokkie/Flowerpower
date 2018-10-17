@@ -132,6 +132,7 @@
           <Property Name="winkelstad" Type="varchar" MaxLength="255" />
           <Property Name="winkeltelefoonnummer" Type="int" />
           <Property Name="winkelmail" Type="varchar" MaxLength="255" />
+          <Property Name="winkelactief" Type="bit" />
         </EntityType>
         <EntityType Name="winkelmand">
           <Key>
@@ -464,6 +465,7 @@
           <Property Name="winkelmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="bestelling" Relationship="Self.FK_bestelling_winkel" FromRole="winkel" ToRole="bestelling" />
           <NavigationProperty Name="medewerkers" Relationship="Self.FK_medewerkers_winkel" FromRole="winkel" ToRole="medewerkers" />
+          <Property Name="winkelactief" Type="Boolean" />
         </EntityType>
         <EntityType Name="winkelmand">
           <Key>
@@ -754,6 +756,7 @@
           <EntitySetMapping Name="winkel">
             <EntityTypeMapping TypeName="FlowerpowerModel.winkel">
               <MappingFragment StoreEntitySet="winkel">
+                <ScalarProperty Name="winkelactief" ColumnName="winkelactief" />
                 <ScalarProperty Name="winkelcode" ColumnName="winkelcode" />
                 <ScalarProperty Name="winkelnaam" ColumnName="winkelnaam" />
                 <ScalarProperty Name="winkelstraatnaam" ColumnName="winkelstraatnaam" />
