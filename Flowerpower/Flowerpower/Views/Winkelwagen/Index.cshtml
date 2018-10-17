@@ -23,13 +23,35 @@
             </tr>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>@item.producten.productnaam</td>
-                    <td>@item.producten.productomschrijving</td>
-                    <td>@item.producten.prijs</td>
-                    <td> @item.aantal</td>
-                    <td>@(item.aantal * item.producten.prijs)</td>
-                </tr>
+
+                using (Html.BeginForm("Delete", "winkelmand", new { id = item.productid }))
+                {
+                    <tr>
+                        <td>@item.producten.productnaam</td>
+                        <td>@item.producten.productomschrijving</td>
+                        <td>@item.producten.prijs</td>
+                        <td> @item.aantal</td>
+                        <td>@(item.aantal * item.producten.prijs)</td>
+
+                        <td>
+                            @*
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.producten.productnaam }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.productid }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.productid }) |
+                            *@
+
+                            <input type="submit" value="Edit" class="btn btn-info" /> 
+                            <input type="submit" value="Details" class="btn btn-warning" /> 
+
+                            <input type="submit" value="Delete" class="btn btn-danger"
+                                   onclick="return confirm('Are you sure you want to delete this item? = @item.producten.productnaam');" /> 
+
+
+
+
+                        </td>
+                    </tr>
+                }
             }
 
             <tr>
