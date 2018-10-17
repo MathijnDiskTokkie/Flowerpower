@@ -119,6 +119,7 @@
     <EntitySetMapping Name="winkel">
       <EntityTypeMapping TypeName="FlowerpowerModel.winkel">
         <MappingFragment StoreEntitySet="winkel">
+          <ScalarProperty Name="winkelactief" ColumnName="winkelactief" />
           <ScalarProperty Name="winkelcode" ColumnName="winkelcode" />
           <ScalarProperty Name="winkelnaam" ColumnName="winkelnaam" />
           <ScalarProperty Name="winkelstraatnaam" ColumnName="winkelstraatnaam" />

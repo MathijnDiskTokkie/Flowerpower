@@ -127,6 +127,7 @@
     <Property Name="winkelstad" Type="varchar" MaxLength="255" />
     <Property Name="winkeltelefoonnummer" Type="int" />
     <Property Name="winkelmail" Type="varchar" MaxLength="255" />
+    <Property Name="winkelactief" Type="bit" />
   </EntityType>
   <EntityType Name="winkelmand">
     <Key>
