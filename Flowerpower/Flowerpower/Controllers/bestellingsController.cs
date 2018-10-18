@@ -88,7 +88,8 @@ namespace Flowerpower.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "bestellingid,winkelcode,klantcode,afgehandelddoor,bestellinggeplaatst,klant_klantid,winkel_winkelcode")] bestelling bestelling)
+        // DIT WERKT NOG NIET GOED!!!
+        public ActionResult Edit([Bind(Include = "afgehandelddoor,bestellinggeplaatst")] bestelling bestelling)
         {
             if (ModelState.IsValid)
             {
