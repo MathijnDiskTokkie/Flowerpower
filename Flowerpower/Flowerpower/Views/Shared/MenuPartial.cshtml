@@ -22,18 +22,19 @@
             <ul class="nav navbar-nav">
                 @if (ViewContext.HttpContext.User.IsInRole("Manager"))
                 {
-                    <li>@Html.ActionLink("Roles", "index", "Roles")</li>
+                    <li>@Html.ActionLink("Boeketten", "index", "Boeketten")</li>
                     <li>@Html.ActionLink("Winkels", "index", "Winkels")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Roles", "index", "Roles")</li>
                     <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                    <li>@Html.ActionLink("Bestellingen", "index", "Bestellings")</li>
                 }
                 else if (ViewContext.HttpContext.User.IsInRole("Manager") || ViewContext.HttpContext.User.IsInRole("Medewerker"))
                 {
                     <li>@Html.ActionLink("Bestellingen", "index", "Bestellings")</li>
+
                 }
                 else
                 {
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 }
 

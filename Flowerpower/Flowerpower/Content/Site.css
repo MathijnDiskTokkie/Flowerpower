@@ -145,10 +145,10 @@ div#flowerpover-div {
     height: 150px;
     width: 200px;
     position: absolute;
-    margin-top: -77px;
+    margin-top: -72px;
     /* margin-left: 360px; */
     transform: translateX(-50%);
-    left: 50%;
+    left: 12%;
 }
 
 
@@ -223,6 +223,17 @@ footer {
 
 div#contact-divv {
     padding-top: 50px;
+}
+
+.navbar-collapse.collapse {
+    padding-left: 104px;
+}
+
+div#footer-contact-blok {
+    border: 1px solid #000;
+    background-color: #f5f5f0;
+    padding: 5px 0 15px 0;
+    box-shadow: 0 2px 3px rgba(0,0,0,.05);
 }
 
 
