@@ -10,108 +10,108 @@ using Flowerpower.Models;
 
 namespace Flowerpower.Controllers
 {
-    [Authorize(Roles = "Manager")]
-    public class winkelsController : Controller
+    public class klantsController : Controller
     {
         private FlowerpowerEntities db = new FlowerpowerEntities();
 
-        // GET: winkels
+        // GET: klants
+        [Authorize(Roles = "Manager")]
         public ActionResult Index()
         {
-            return View(db.winkel.ToList());
+            return View(db.klant.ToList());
         }
 
-        // GET: winkels/Details/5
+        // GET: klants/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            winkel winkel = db.winkel.Find(id);
-            if (winkel == null)
+            klant klant = db.klant.Find(id);
+            if (klant == null)
             {
                 return HttpNotFound();
             }
-            return View(winkel);
+            return View(klant);
         }
 
-        // GET: winkels/Create
+        // GET: klants/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: winkels/Create
+        // POST: klants/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "winkelcode,winkelnaam,winkelstraatnaam,winkelpostcode,winkelstad,winkeltelefoonnummer,winkelmail,winkelactief")] winkel winkel)
+        public ActionResult Create([Bind(Include = "naam,achternaam,straatnaam,postcode,tussenvoegsel,geboortedatum,woonplaats,klantid")] klant klant)
         {
             if (ModelState.IsValid)
             {
-                db.winkel.Add(winkel);
+                db.klant.Add(klant);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(winkel);
+            return View(klant);
         }
 
-        // GET: winkels/Edit/5
+        // GET: klants/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            winkel winkel = db.winkel.Find(id);
-            if (winkel == null)
+            klant klant = db.klant.Find(id);
+            if (klant == null)
             {
                 return HttpNotFound();
             }
-            return View(winkel);
+            return View(klant);
         }
 
-        // POST: winkels/Edit/5
+        // POST: klants/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "winkelcode,winkelnaam,winkelstraatnaam,winkelpostcode,winkelstad,winkeltelefoonnummer,winkelmail,winkelactief")] winkel winkel)
+        public ActionResult Edit([Bind(Include = "naam,achternaam,straatnaam,postcode,tussenvoegsel,email,geboortedatum,woonplaats,klantid")] klant klant)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(winkel).State = EntityState.Modified;
+                db.Entry(klant).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(winkel);
+            return View(klant);
         }
 
-        // GET: winkels/Delete/5
+        // GET: klants/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            winkel winkel = db.winkel.Find(id);
-            if (winkel == null)
+            klant klant = db.klant.Find(id);
+            if (klant == null)
             {
                 return HttpNotFound();
             }
-            return View(winkel);
+            return View(klant);
         }
 
-        // POST: winkels/Delete/5
+        // POST: klants/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            winkel winkel = db.winkel.Find(id);
-            db.winkel.Remove(winkel);
+            klant klant = db.klant.Find(id);
+            db.klant.Remove(klant);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
