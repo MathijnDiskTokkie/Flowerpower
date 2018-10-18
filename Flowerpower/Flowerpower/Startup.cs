@@ -10,7 +10,7 @@ namespace Flowerpower
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            AntiForgeryConfig.SuppressXFrameOptionsHeader = true;
+     
         }
     }
 }

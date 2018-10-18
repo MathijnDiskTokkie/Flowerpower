@@ -26,7 +26,7 @@ namespace Flowerpower.Models
         public string winkelstraatnaam { get; set; }
         public string winkelpostcode { get; set; }
         public string winkelstad { get; set; }
-        public Nullable<int> winkeltelefoonnummer { get; set; }
+        public string winkeltelefoonnummer { get; set; }
         public string winkelmail { get; set; }
         public Nullable<bool> winkelactief { get; set; }
     

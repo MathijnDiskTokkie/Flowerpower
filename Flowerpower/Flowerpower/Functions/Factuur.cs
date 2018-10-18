@@ -41,7 +41,8 @@ namespace Flowerpower.Functions
             //headertable.DefaultCell.Border = Rectangle.BOX; //for testing           
 
             iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(HttpContext.Current.Server.MapPath("~/Content/Images/logoo.png"));
-            logo.ScaleToFit(100, 15);
+            logo.ScaleToFit(1000, 80);
+            
 
             {
                 PdfPCell pdfCelllogo = new PdfPCell(logo);
@@ -65,10 +66,10 @@ namespace Flowerpower.Functions
                 PdfPCell nextPostCell1 = new PdfPCell(new Phrase("FlowerPower", titleFont));
                 nextPostCell1.Border = Rectangle.NO_BORDER;
                 nested.AddCell(nextPostCell1);
-                PdfPCell nextPostCell2 = new PdfPCell(new Phrase("xxx City Heights, AZ 8xxx4, US,", bodyFont));
+                PdfPCell nextPostCell2 = new PdfPCell(new Phrase(""+best.winkel.winkelstraatnaam + ", "+ best.winkel.winkelpostcode, bodyFont));
                 nextPostCell2.Border = Rectangle.NO_BORDER;
                 nested.AddCell(nextPostCell2);
-                PdfPCell nextPostCell3 = new PdfPCell(new Phrase("(xxx) xxx-xxx", bodyFont));
+                PdfPCell nextPostCell3 = new PdfPCell(new Phrase(""+best.winkel.winkeltelefoonnummer, bodyFont));
                 nextPostCell3.Border = Rectangle.NO_BORDER;
                 nested.AddCell(nextPostCell3);
                 PdfPCell nextPostCell4 = new PdfPCell(new Phrase("info@flowerpower.com", EmailFont));
@@ -227,7 +228,15 @@ namespace Flowerpower.Functions
             totalAmtStrCell.Border = Rectangle.TOP_BORDER;   //Rectangle.NO_BORDER; //Rectangle.TOP_BORDER;
             totalAmtStrCell.HorizontalAlignment = 1;
             itemTable.AddCell(totalAmtStrCell);
-            PdfPCell totalAmtCell = new PdfPCell(new Phrase("€", boldTableFont));
+
+            decimal totaal = 0;
+            foreach (var item in best.winkelmand)
+            {
+                totaal += (int)item.aantal * (decimal)item.producten.prijs;
+            }
+
+
+            PdfPCell totalAmtCell = new PdfPCell(new Phrase("€"+totaal, boldTableFont));
             totalAmtCell.HorizontalAlignment = 1;
             itemTable.AddCell(totalAmtCell);
 
@@ -244,7 +253,7 @@ namespace Flowerpower.Functions
             cb.BeginText();
             cb.SetFontAndSize(bf, 8);
             cb.SetTextMatrix(pageSize.GetLeft(120), 20);
-            cb.ShowText("Invoice was created on a computer and is valid without the signature and seal. ");
+            cb.ShowText("U kunt uw boeket ophalen bij "+best.winkel.winkelnaam + " in "+best.winkel.winkelstad);
             cb.EndText();
 
             //Move the pointer and draw line to separate footer section from rest of page
@@ -262,13 +271,14 @@ namespace Flowerpower.Functions
         protected void DownloadPDF(System.IO.MemoryStream PDFData)
         {
             // Clear response content & headers
+
             HttpContext.Current.Response.Clear();
             HttpContext.Current.Response.ClearContent();
             HttpContext.Current.Response.ClearHeaders();
             HttpContext.Current.Response.ContentType = "application/pdf";
             HttpContext.Current.Response.Charset = string.Empty;
             HttpContext.Current.Response.Cache.SetCacheability(System.Web.HttpCacheability.Public);
-            HttpContext.Current.Response.AddHeader("Content-Disposition", string.Format("attachment;filename=Invoice-{0}.pdf", "OrderNo"));
+            HttpContext.Current.Response.AppendHeader("Content-Disposition", string.Format("attachment;filename=Invoice-{0}.pdf", "OrderNo"));
             HttpContext.Current.Response.OutputStream.Write(PDFData.GetBuffer(), 0, PDFData.GetBuffer().Length);
             HttpContext.Current.Response.OutputStream.Flush();
             HttpContext.Current.Response.OutputStream.Close();
