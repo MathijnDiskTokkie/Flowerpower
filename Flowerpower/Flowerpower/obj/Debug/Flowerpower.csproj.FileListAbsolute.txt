@@ -1,0 +1,2 @@
+C:\Users\mathi\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.csprojAssemblyReference.cache
+C:\Users\mathi\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.csproj.CoreCompileInputs.cache
