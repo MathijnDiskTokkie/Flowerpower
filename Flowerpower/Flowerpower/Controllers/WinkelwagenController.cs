@@ -208,7 +208,7 @@ namespace FlowerPower.Controllers
                 
 
             }
-<<<<<<< HEAD
+
             winkelmand winkelmand = db.winkelmand.Find(id);
             if ( winkelmand == null)
             {
@@ -244,7 +244,7 @@ namespace FlowerPower.Controllers
             if (producten == null)
             {
                 return HttpNotFound();
-=======
+
             catch (Exception ex) {
 
                 return View();
