@@ -117,7 +117,6 @@ C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\bin\Microsoft
 C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\bin\Microsoft.AI.Web.xml
 C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.csprojAssemblyReference.cache
 C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.csproj.CopyComplete
 C:\Users\User\Documents\GitHub\Flowerpower\Flowerpower\Flowerpower\obj\Debug\Flowerpower.dll

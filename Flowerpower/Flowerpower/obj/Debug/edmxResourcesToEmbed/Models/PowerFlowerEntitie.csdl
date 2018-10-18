@@ -131,10 +131,11 @@
     <Property Name="winkelstraatnaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="winkelpostcode" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
     <Property Name="winkelstad" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="winkeltelefoonnummer" Type="Int32" />
+    <Property Name="winkeltelefoonnummer" Type="String" />
     <Property Name="winkelmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="bestelling" Relationship="Self.FK_bestelling_winkel" FromRole="winkel" ToRole="bestelling" />
     <NavigationProperty Name="medewerkers" Relationship="Self.FK_medewerkers_winkel" FromRole="winkel" ToRole="medewerkers" />
+    <Property Name="winkelactief" Type="Boolean" />
   </EntityType>
   <EntityType Name="winkelmand">
     <Key>
