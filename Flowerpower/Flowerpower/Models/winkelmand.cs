@@ -21,10 +21,5 @@ namespace Flowerpower.Models
     
         public virtual bestelling bestelling { get; set; }
         public virtual producten producten { get; set; }
-
-        internal void Deleteproduct(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
