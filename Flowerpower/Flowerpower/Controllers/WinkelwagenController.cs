@@ -141,7 +141,6 @@ namespace FlowerPower.Controllers
 
             //update
             
-
             model.winkels = PopulateWinkels();
             var selectedItem = model.winkels.Find(p => p.Value == model.Winkelcode.ToString());
             if (selectedItem != null)
@@ -154,8 +153,8 @@ namespace FlowerPower.Controllers
                 bestelling.winkelcode = model.Winkelcode;
                 db.SaveChanges();
 
-                return RedirectToAction("Afronden", "Winkelwagen", new { bestelid = bestelling.bestellingid });
-
+                //return RedirectToAction("AfrondenFile", "Winkelwagen", new { bestelid = bestelling.bestellingid });
+                return RedirectToAction("Afronden","Winkelwagen", new {bestelid = bestelling.bestellingid });
 
 
             }
@@ -164,8 +163,10 @@ namespace FlowerPower.Controllers
         }
 
 
-        public ActionResult Afronden(int bestelid)
+        public ActionResult AfrondenFile(string bestelidd)
         {
+
+            int bestelid = Convert.ToInt16(bestelidd);
             try
             {
                 var bestelling = (from i in db.bestelling where i.bestellingid == bestelid select i).FirstOrDefault();
@@ -178,13 +179,12 @@ namespace FlowerPower.Controllers
                     Response.Cookies.Add(c);
                 }
                 // factuur uitdraaien
-                RedirectToAction("Index", "Home", null);
 
                 Flowerpower.Functions.Factuur factuur = new Flowerpower.Functions.Factuur();
-                factuur.GenerateInvoice(bestelling);
-             
-
-                return View((from i in db.bestelling where i.bestellingid == bestelid select i).FirstOrDefault());
+                byte[] stream= factuur.GenerateInvoice(bestelling);
+      
+                return File(stream, "application/pdf", "FlowerpowerFactuur"+bestelidd+".pdf");
+                //return View((from i in db.bestelling where i.bestellingid == bestelid select i).FirstOrDefault());
 
                 
 
@@ -196,8 +196,13 @@ namespace FlowerPower.Controllers
         }
 
 
+        public ActionResult Afronden(int? bestelid) {
 
-   
+            var bestelling = from i in db.bestelling where i.bestellingid == bestelid select i;
+            return View(bestelling.FirstOrDefault());
+
+        }
+
 
         public List<SelectListItem> PopulateWinkels() {
 
