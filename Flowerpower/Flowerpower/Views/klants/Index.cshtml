@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Flowerpower.Models.klant>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.achternaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.straatnaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.postcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tussenvoegsel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.geboortedatum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.woonplaats)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.achternaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.straatnaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.postcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tussenvoegsel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.geboortedatum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.woonplaats)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.klantid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.klantid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.klantid })
+        </td>
+    </tr>
+}
+
+</table>
