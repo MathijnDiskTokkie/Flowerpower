@@ -26,7 +26,83 @@
         @RenderBody()
     </div>
 
-    <footer class="container-fluid"></footer>
+    <footer class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-sm-3" style="text-align:center;">
+                <h3 style="padding: 5px; font-size: 16px; font-weight: 700; color: #222222;" class="h3-footer">CONTACT</h3>
+
+
+            @*<div>
+                <p><i class="fas fa-home"></i>  Jl. Lebak Sari No.8,Petitenget, Seminyak, Bali, 80361  </p>
+                <p><i class="fas fa-phone"></i>  +31 53 12 12 122</p>
+                <p><i class="fas fa-envelope"></i>  Flowerpower@info.nl</p>
+            </div>*@
+            </div>
+
+            <div class="col-sm-3" >
+                <h3 style="padding: 5px; font-size: 16px; font-weight: 700; color: #222222;" class="h3-footer">OPENINGSTIJDEN</h3>
+                <div class="textwidget" style="padding-left: 50px;">
+                    <table class="hip-contact" style="width: 100%; ">
+                        <tbody>
+                            <tr>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>Maandag</td>
+                                <td>09:00 – 18:00</td>
+                            </tr>
+                            <tr>
+                                <td>Dinsdag</td>
+                                <td>09:00 – 18:00</td>
+                            </tr>
+                            <tr>
+                                <td>Woensdag</td>
+                                <td>09:00 – 18:00</td>
+                            </tr>
+                            <tr>
+                                <td>Donderdag</td>
+                                <td>09:00 – 18:00</td>
+                            </tr>
+                            <tr>
+                                <td>Vrijdag</td>
+                                <td>09:00 – 18:00</td>
+                            </tr>
+                            <tr>
+                                <td>Zaterdag</td>
+                                <td>09:00 – 18:00</td>
+                            </tr>
+                            <tr>
+                                <td>Zondag</td>
+                                <td>Gesloten</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-sm-3" style="text-align:center;">
+                <h3 style="padding: 5px; font-size: 16px; font-weight: 700; color: #222222;" class="h3-footer">LINKS</h3>
+
+            </div>
+
+
+
+            <div class="col-sm-3" style="text-align:center;">
+
+                <h3 style="padding: 5px;font-size: 16px; font-weight: 700; color: #222222;" class="h3-footer">VOLG ONS VIA:</h3>
+
+                <i style="font-size: xx-large; color: #000;" class="fab fa-facebook-square"></i>
+                <i style="font-size: xx-large; color: #000;" class="fab fa-twitter-square"></i>
+                <i style="font-size: xx-large; color: #000;" class="fab fa-tripadvisor"></i>
+
+            </div>
+        </div>
+
+        <center> <p class="text-nowrap" style="color: #000;">&copy; @DateTime.Now.Year - FlowerPower</p></center>
+
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -139,12 +140,71 @@ namespace FlowerPower.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Delete(int id)
+        //[HttpPost]
+        //public ActionResult Delete(int id)
+        //{
+        //    winkelmand winkelmand = new winkelmand();
+        //    winkelmand.Deleteproduct(id);
+        //    return RedirectToAction("Winkelwagen");
+        //}
+
+
+
+        // GET: Boeketten/Edit/5
+        public ActionResult Edit(int? id)
         {
-            winkelmand winkelmand = new winkelmand();
-            winkelmand.Deleteproduct(id);
-            return RedirectToAction("Winkelwagen");
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            producten producten = db.producten.Find(id);
+            if (producten == null)
+            {
+                return HttpNotFound();
+            }
+            return View(producten);
+        }
+
+        // POST: Boeketten/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "productid,productnaam,prijs,productomschrijving,gearchiveerd")] producten producten)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(producten).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(producten);
+        }
+
+        // GET: Boeketten/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            producten producten = db.producten.Find(id);
+            if (producten == null)
+            {
+                return HttpNotFound();
+            }
+            return View(producten);
+        }
+
+        // POST: Boeketten/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            producten producten = db.producten.Find(id);
+            db.producten.Remove(producten);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
     }
