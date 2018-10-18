@@ -350,9 +350,7 @@
     <Content Include="Views\Shared\MenuPartial.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
-    <Content Include="Views\bestellings\Create.cshtml" />
     <Content Include="Views\bestellings\Delete.cshtml" />
-    <Content Include="Views\bestellings\Details.cshtml" />
     <Content Include="Views\bestellings\Edit.cshtml" />
     <Content Include="Views\bestellings\Index.cshtml" />
     <Content Include="Views\Boeketten\Create.cshtml" />
@@ -367,7 +365,6 @@
     <Content Include="Views\winkels\Delete.cshtml" />
     <Content Include="Views\winkels\Edit.cshtml" />
     <Content Include="Views\winkels\Index.cshtml" />
-    <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Winkelwagen\Delete.cshtml" />
     <Content Include="Views\klants\Create.cshtml" />
     <Content Include="Views\klants\Delete.cshtml" />
