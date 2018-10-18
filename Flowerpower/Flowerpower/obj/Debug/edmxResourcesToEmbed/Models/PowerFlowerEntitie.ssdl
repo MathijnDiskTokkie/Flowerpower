@@ -125,7 +125,7 @@
     <Property Name="winkelstraatnaam" Type="varchar" MaxLength="255" />
     <Property Name="winkelpostcode" Type="varchar" MaxLength="7" />
     <Property Name="winkelstad" Type="varchar" MaxLength="255" />
-    <Property Name="winkeltelefoonnummer" Type="varchar" MaxLength="50" />
+    <Property Name="winkeltelefoonnummer" Type="varchar" MaxLength="255" />
     <Property Name="winkelmail" Type="varchar" MaxLength="255" />
     <Property Name="winkelactief" Type="bit" />
   </EntityType>
