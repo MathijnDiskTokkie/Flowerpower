@@ -60,8 +60,8 @@ namespace Flowerpower
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "685808206282-ucqmsfcvt37emfna7kn2ivfcmgh6d3vp.apps.googleusercontent.com",
-                ClientSecret = "Qdjn-wQw3G1Jtj9AS7QZxJyF"
+                ClientId = "150880220607-gsj7sfamtnon8u5hoh6o2726j2nkso00.apps.googleusercontent.com",
+                ClientSecret = "n9G4LQ1oGQOBLc2yD3vgIHws"
             });
             }
     }
