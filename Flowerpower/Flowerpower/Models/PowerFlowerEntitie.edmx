@@ -130,7 +130,7 @@
           <Property Name="winkelstraatnaam" Type="varchar" MaxLength="255" />
           <Property Name="winkelpostcode" Type="varchar" MaxLength="7" />
           <Property Name="winkelstad" Type="varchar" MaxLength="255" />
-          <Property Name="winkeltelefoonnummer" Type="varchar" MaxLength="50" />
+          <Property Name="winkeltelefoonnummer" Type="varchar" MaxLength="255" />
           <Property Name="winkelmail" Type="varchar" MaxLength="255" />
           <Property Name="winkelactief" Type="bit" />
         </EntityType>
@@ -461,7 +461,7 @@
           <Property Name="winkelstraatnaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="winkelpostcode" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
           <Property Name="winkelstad" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="winkeltelefoonnummer" Type="String" />
+          <Property Name="winkeltelefoonnummer" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="winkelmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="bestelling" Relationship="Self.FK_bestelling_winkel" FromRole="winkel" ToRole="bestelling" />
           <NavigationProperty Name="medewerkers" Relationship="Self.FK_medewerkers_winkel" FromRole="winkel" ToRole="medewerkers" />
