@@ -46,7 +46,7 @@ namespace Flowerpower.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "winkelcode,winkelnaam,winkelstraatnaam,winkelpostcode,winkelstad,winkeltelefoonnummer,winkelmail")] winkel winkel)
+        public ActionResult Create([Bind(Include = "winkelcode,winkelnaam,winkelstraatnaam,winkelpostcode,winkelstad,winkeltelefoonnummer,winkelmail,winkelactief")] winkel winkel)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace Flowerpower.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "winkelcode,winkelnaam,winkelstraatnaam,winkelpostcode,winkelstad,winkeltelefoonnummer,winkelmail")] winkel winkel)
+        public ActionResult Edit([Bind(Include = "winkelcode,winkelnaam,winkelstraatnaam,winkelpostcode,winkelstad,winkeltelefoonnummer,winkelmail,winkelactief")] winkel winkel)
         {
             if (ModelState.IsValid)
             {

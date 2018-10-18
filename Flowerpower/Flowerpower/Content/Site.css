@@ -145,7 +145,7 @@ div#flowerpover-div {
     height: 150px;
     width: 200px;
     position: absolute;
-    margin-top: -99px;
+    margin-top: -77px;
     /* margin-left: 360px; */
     transform: translateX(-50%);
     left: 50%;
@@ -166,4 +166,61 @@ div#flowerpover-div {
 
 a.btn.btn-warning.fas.fa-shopping-cart {
     font-size: 20px;
+}
+
+div#columns {
+    margin-top: 30px;
+}
+
+div#bloem-div-container {
+    background-color: #ccefff;
+}
+
+
+/* Footer */
+
+footer {
+    background-color: #ccccb3;
+}
+
+#adres-blok {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.contact {
+    color: #000;
+    font-size: 13px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.row-centered {
+    text-align: center !important;
+}
+
+#adres-blok {
+    font-family: Rajdhani;
+}
+
+.bloem-block-img{
+    width: 100px;
+    height: auto;
+}
+
+.bloem-h4{
+    text-align: center;
+}
+
+#bloem-div-container{
+    margin-top: 50px;
+}
+
+.h3-footer{
+    text-align: center;
+}
+
+
+div#contact-divv {
+    padding-top: 50px;
 }
