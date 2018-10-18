@@ -204,6 +204,7 @@
     <Compile Include="Controllers\bestellingsController.cs" />
     <Compile Include="Controllers\BoekettenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\klantsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\winkelsController.cs" />
@@ -367,6 +368,11 @@
     <Content Include="Views\winkels\Index.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Winkelwagen\Delete.cshtml" />
+    <Content Include="Views\klants\Create.cshtml" />
+    <Content Include="Views\klants\Delete.cshtml" />
+    <Content Include="Views\klants\Details.cshtml" />
+    <Content Include="Views\klants\Edit.cshtml" />
+    <Content Include="Views\klants\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
