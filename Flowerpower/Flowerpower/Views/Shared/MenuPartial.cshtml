@@ -36,12 +36,15 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Boeket", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink(" ","Index", "Winkelwagen", routeValues: null, htmlAttributes: new { id = "winkelmandid", @class = "fas fa-shopping-cart" })</li>*@
+                    
                 }
+
             </ul>
-            @Html.Partial("_LoginPartial")
+                @Html.Partial("_LoginPartial")
+            </div>
         </div>
     </div>
-</div>
 
 
 

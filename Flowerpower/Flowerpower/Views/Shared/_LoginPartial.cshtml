@@ -13,19 +13,22 @@
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Manage account", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Uitloggen</a></li>
-    </ul>
+<ul class="nav navbar-nav navbar-right">
+    <li>@Html.ActionLink(" ", "Index", "Winkelwagen", routeValues: null, htmlAttributes: new { id = "productid", @class = "fas fa-shopping-cart" })</li>
+
+    <li>
+        @Html.ActionLink("Manage account", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+    </li>
+    <li><a href="javascript:document.getElementById('logoutForm').submit()">Uitloggen</a></li>
+</ul>
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li><i class="fas fa-shopping-cart" style="color: #fff">1</i></li>
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+<ul class="nav navbar-nav navbar-right">
+    <li>@Html.ActionLink(" ", "Index", "Winkelwagen", routeValues: null, htmlAttributes: new { id = "winkelmandid", @class = "fas fa-shopping-cart" })</li>
+
+    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+</ul>
 }
