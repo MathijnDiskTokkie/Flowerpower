@@ -15,23 +15,23 @@ namespace FlowerPower.Controllers
 
         //private List<winkelmand> shoppingCartList = new List<winkelmand>();
 
-      
+
 
         // GET: Cart
-        public ActionResult Index(int productid , int winkelid)
+        public ActionResult Index(int productid, int winkelid)
         {
             int klantid = (from i in db.klant where i.email == User.Identity.Name select i.klantid).FirstOrDefault();
 
             if (klantid != 0)
             {
-                /*int bestellingid = ((from i in db.bestelling select i).OrderByDescending(x => x.bestellingid).FirstOrDefault().bestellingid)+1;*/
+                 int bestellingid = ((from i in db.bestelling select i).OrderByDescending(x => x.bestellingid).FirstOrDefault().bestellingid) + 1;
 
-                //int last = db.bestelling.Count() == 0 ? 0 : db.bestelling.OrderByDescending(b => b.bestellingid).First().bestellingid + 1;
+                   //int last = db.bestelling.Count() == 0 ? 0 : db.bestelling.OrderByDescending(b => b.bestellingid).First().bestellingid + 1;
 
-                //var w = from i in db.winkelmand where i.bestellingid == last select i;
+                   //var w = from i in db.winkelmand where i.bestellingid == last select i;
 
-                HttpCookie cookie = HttpContext.Request.Cookies.Get("Winkelmand");
-               
+                   HttpCookie cookie = HttpContext.Request.Cookies.Get("Winkelmand");
+
 
                 if (cookie != null)
                 {
@@ -117,15 +117,17 @@ namespace FlowerPower.Controllers
             else
             {
 
-                RedirectToAction("Register", "Account", null);            }
+                RedirectToAction("Register", "Account", null);
+            }
 
             return null;
-            
+
         }
 
 
 
-        public ActionResult PlaatsDatumKiezen(int bestelid) {
+        public ActionResult PlaatsDatumKiezen(int bestelid)
+        {
 
             PlaatsDatumModel model = new PlaatsDatumModel();
             var bestelling = from i in db.bestelling where i.bestellingid == bestelid select i;
@@ -137,10 +139,11 @@ namespace FlowerPower.Controllers
         }
 
         [HttpPost]
-        public ActionResult PlaatsDatumKiezen(PlaatsDatumModel model) {
+        public ActionResult PlaatsDatumKiezen(PlaatsDatumModel model)
+        {
 
             //update
-            
+
 
             model.winkels = PopulateWinkels();
             var selectedItem = model.winkels.Find(p => p.Value == model.Winkelcode.ToString());
@@ -182,14 +185,15 @@ namespace FlowerPower.Controllers
 
                 Flowerpower.Functions.Factuur factuur = new Flowerpower.Functions.Factuur();
                 factuur.GenerateInvoice(bestelling);
-             
+
 
                 return View((from i in db.bestelling where i.bestellingid == bestelid select i).FirstOrDefault());
 
-                
+
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
 
                 return View();
             }
@@ -197,20 +201,23 @@ namespace FlowerPower.Controllers
 
 
 
-   
 
-        public List<SelectListItem> PopulateWinkels() {
+
+        public List<SelectListItem> PopulateWinkels()
+        {
 
             List<SelectListItem> item = new List<SelectListItem>();
             var winkels = (from i in db.winkel select i).ToList();
 
-            foreach (var its in winkels) {
+            foreach (var its in winkels)
+            {
 
-                item.Add(new SelectListItem {
+                item.Add(new SelectListItem
+                {
 
                     Text = its.winkelstad,
                     Value = its.winkelcode.ToString()
-                    
+
 
 
                 });
@@ -222,5 +229,5 @@ namespace FlowerPower.Controllers
 
 
     }
-   
+
 }
