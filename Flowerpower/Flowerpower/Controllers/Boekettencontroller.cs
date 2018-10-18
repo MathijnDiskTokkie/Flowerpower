@@ -10,6 +10,7 @@ using Flowerpower.Models;
 
 namespace Flowerpower.Controllers
 {
+    [Authorize(Roles = "Manager")]
     public class BoekettenController : Controller
     {
         private FlowerpowerEntities db = new FlowerpowerEntities();

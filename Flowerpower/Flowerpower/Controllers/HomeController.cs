@@ -29,8 +29,9 @@ namespace Flowerpower.Controllers
 
         public ActionResult Contact()
         {
-
-            return View();
+            List<winkel> Winkels = new List<winkel>();
+            Winkels = (from i in db.winkel where i.winkelactief == true select i).ToList();
+            return View(Winkels);
         }
     }
 }
