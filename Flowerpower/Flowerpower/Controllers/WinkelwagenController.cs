@@ -116,6 +116,25 @@ namespace FlowerPower.Controllers
             
         }
 
+        [HttpPost]
+        public ActionResult Index(List<Flowerpower.Models.winkelmand> model) {
+
+            HttpCookie cookie = HttpContext.Request.Cookies.Get("Winkelmand");
+            int bestellingid = Convert.ToInt16(cookie.Value);
+
+            var dd = from i in db.bestelling where i.bestellingid == bestellingid select i;
+
+            for (int  i = 0; i < model.Count; i++) {
+                dd.FirstOrDefault().winkelmand.ElementAt(i).aantal = model[i].aantal;
+            }
+
+            db.SaveChanges();
+
+
+
+            return RedirectToAction("");
+        }
+
 
 
         public ActionResult PlaatsDatumKiezen() {
@@ -157,30 +176,30 @@ namespace FlowerPower.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            producten producten = db.producten.Find(id);
-            if (producten == null)
+            winkelmand winkelmand = db.winkelmand.Find(id);
+            if ( winkelmand == null)
             {
                 return HttpNotFound();
             }
-            return View(producten);
+            return View(winkelmand);
         }
 
         // POST: Boeketten/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+      /*  [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "productid,productnaam,prijs,productomschrijving,gearchiveerd")] producten producten)
+        public ActionResult Edit([Bind(Include = "aantal")] winkelmand winkelmand)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(producten).State = EntityState.Modified;
+                db.Entry(winkelmand).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("index");
             }
-            return View(producten);
+            return View(winkelmand);
         }
-
+        */
         // GET: Boeketten/Delete/5
         public ActionResult Delete(int? id)
         {
