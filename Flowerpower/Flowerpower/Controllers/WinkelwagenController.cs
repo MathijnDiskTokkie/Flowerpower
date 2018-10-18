@@ -15,10 +15,10 @@ namespace FlowerPower.Controllers
 
         //private List<winkelmand> shoppingCartList = new List<winkelmand>();
 
-      
+
 
         // GET: Cart
-        public ActionResult Index(int productid , int winkelid)
+        public ActionResult Index(int productid, int winkelid)
         {
             int klantid = (from i in db.klant where i.email == User.Identity.Name select i.klantid).FirstOrDefault();
 
@@ -30,116 +30,180 @@ namespace FlowerPower.Controllers
 
                 //var w = from i in db.winkelmand where i.bestellingid == last select i;
 
-                HttpCookie cookie = HttpContext.Request.Cookies.Get("Winkelmand");
-               
-
-                if (cookie != null)
+                if (productid != 0 && winkelid != 0)
                 {
 
-                    int bestll = Convert.ToInt16(cookie.Value);
+                    HttpCookie cookie = HttpContext.Request.Cookies.Get("Winkelmand");
 
-                    var aant = from i in db.winkelmand where i.bestellingid == bestll && i.productid == productid select i;
-                    if (aant.Any())
+
+                    if (cookie != null)
                     {
-                        int nieuwe = (int)(aant.FirstOrDefault().aantal) + 1;
-                        aant.FirstOrDefault().aantal = nieuwe;
+
+                        int bestll = Convert.ToInt16(cookie.Value);
+
+                        var aant = from i in db.winkelmand where i.bestellingid == bestll && i.productid == productid select i;
+                        if (aant.Any())
+                        {
+                            int nieuwe = (int)(aant.FirstOrDefault().aantal) + 1;
+                            aant.FirstOrDefault().aantal = nieuwe;
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+
+                            winkelmand wk = new winkelmand();
+                            wk.productid = productid;
+                            wk.aantal = 1;
+                            wk.bestellingid = Convert.ToInt16(cookie.Value);
+
+                            db.winkelmand.Add(wk);
+
+                        }
+
                         db.SaveChanges();
+
                     }
                     else
                     {
 
+                        bestelling bes = new bestelling();
+                        bes.winkel_winkelcode = winkelid;
+                        bes.winkelcode = winkelid;
+                        bes.klant_klantid = klantid;
+                        bes.bestellinggeplaatst = DateTime.Today;
+                        db.bestelling.Add(bes);
+                        db.SaveChanges();
+
                         winkelmand wk = new winkelmand();
                         wk.productid = productid;
                         wk.aantal = 1;
-                        wk.bestellingid = Convert.ToInt16(cookie.Value);
+                        wk.bestellingid = bes.bestellingid;
+
 
                         db.winkelmand.Add(wk);
+                        db.SaveChanges();
+
+                        HttpCookie cookie1 = new HttpCookie("Winkelmand");
+                        cookie1.Value = "" + bes.bestellingid; // bestelling id
+                        HttpContext.Response.SetCookie(cookie1);
+                        Winkelwagen winkes = new Winkelwagen();
+
+                        List<winkelmand> winkelwagen = (from i in db.winkelmand where i.bestellingid == bes.bestellingid select i).ToList();
+
+                        foreach (var item in winkelwagen)
+                        {
+
+                            item.producten = (from i in db.producten where i.productid == item.productid select i).FirstOrDefault();
+                        }
+
+                        decimal totaal = 0;
+                        for (int i = 0; i < winkelwagen.Count; i++)
+                        {
+                            totaal += (decimal)(winkelwagen[i].aantal * winkelwagen[i].producten.prijs);
+                        }
+                        winkes.totaal = totaal;
+                        winkes.winkelwagen = winkelwagen;
+                        winkes.directwinkelwagen = false;
+
+                        return View(winkes);
+
+
+
 
                     }
+                    if (cookie != null)
+                    {
+                        int bestllj = Convert.ToInt16(cookie.Value);
+                        Winkelwagen winkes = new Winkelwagen();
 
-                    db.SaveChanges();
+                        List<winkelmand> winkelwagen = (from i in db.winkelmand where i.bestellingid == bestllj select i).ToList();
 
+                        foreach (var item in winkelwagen)
+                        {
+
+                            item.producten = (from i in db.producten where i.productid == item.productid select i).FirstOrDefault();
+                        }
+
+                        decimal totaal = 0;
+                        for (int i = 0; i < winkelwagen.Count; i++)
+                        {
+                            totaal += (decimal)(winkelwagen[i].aantal * winkelwagen[i].producten.prijs);
+                        }
+                        winkes.totaal = totaal;
+                        winkes.winkelwagen = winkelwagen;
+                        winkes.directwinkelwagen = false;
+
+                        return View(winkes);
+
+                    }
                 }
                 else
                 {
+                    HttpCookie cookie = HttpContext.Request.Cookies.Get("Winkelmand");
 
-                    bestelling bes = new bestelling();
-                    bes.winkel_winkelcode = winkelid;
-                    bes.winkelcode = winkelid;
-                    bes.klant_klantid = klantid;
-                    bes.bestellinggeplaatst = DateTime.Today;
-                    db.bestelling.Add(bes);
-                    db.SaveChanges();
-
-                    winkelmand wk = new winkelmand();
-                    wk.productid = productid;
-                    wk.aantal = 1;
-                    wk.bestellingid = bes.bestellingid;
-
-
-                    db.winkelmand.Add(wk);
-                    db.SaveChanges();
-
-                    HttpCookie cookie1 = new HttpCookie("Winkelmand");
-                    cookie1.Value = "" + bes.bestellingid; // bestelling id
-                    HttpContext.Response.SetCookie(cookie1);
-
-                    List<winkelmand> winkelwagen = (from i in db.winkelmand where i.bestellingid == bes.bestellingid select i).ToList();
-
-                    foreach (var item in winkelwagen)
+                    if (cookie != null)
                     {
+                        int bestllj = Convert.ToInt16(cookie.Value);
+                        Winkelwagen winkes = new Winkelwagen();
 
-                        item.producten = (from i in db.producten where i.productid == item.productid select i).FirstOrDefault();
+                        List<winkelmand> winkelwagen = (from i in db.winkelmand where i.bestellingid == bestllj select i).ToList();
+
+                        foreach (var item in winkelwagen)
+                        {
+
+                            item.producten = (from i in db.producten where i.productid == item.productid select i).FirstOrDefault();
+                        }
+
+                        decimal totaal = 0;
+                        for (int i = 0; i < winkelwagen.Count; i++)
+                        {
+                            totaal += (decimal)(winkelwagen[i].aantal * winkelwagen[i].producten.prijs);
+                        }
+                        winkes.totaal = totaal;
+                        winkes.winkelwagen = winkelwagen;
+                        winkes.directwinkelwagen = false;
+
+                        return View(winkes);
                     }
+                    else {
 
-
-
-                    return View(winkelwagen);
-
-
-                }
-                if (cookie != null)
-                {
-                    int bestllj = Convert.ToInt16(cookie.Value);
-                    List<winkelmand> winkelwagen = (from i in db.winkelmand where i.bestellingid == bestllj select i).ToList();
-
-                    foreach (var item in winkelwagen)
-                    {
-
-                        item.producten = (from i in db.producten where i.productid == item.productid select i).FirstOrDefault();
+                        return Content(@"<script language='javascript' type='text/javascript'>
+                         alert('Winkelmand leeg');
+                         window.location.href='/Home/Index'
+                         </script>
+                      ");
                     }
-
-                    return View(winkelwagen);
+                    
 
                 }
 
             }
             else
             {
-
-                RedirectToAction("Register", "Account", null);            }
+                return RedirectToAction("Register", "Account", null);
+            }
 
             return null;
-            
         }
 
         [HttpPost]
-        public ActionResult Index(List<Flowerpower.Models.winkelmand> model) {
+        public ActionResult Index(Winkelwagen model) {
 
             HttpCookie cookie = HttpContext.Request.Cookies.Get("Winkelmand");
             int bestellingid = Convert.ToInt16(cookie.Value);
 
             var dd = from i in db.bestelling where i.bestellingid == bestellingid select i;
 
-            for (int  i = 0; i < model.Count; i++) {
-                dd.FirstOrDefault().winkelmand.ElementAt(i).aantal = model[i].aantal;
+            for (int i = 0; i < model.winkelwagen.Count; i++)
+            {
+                dd.FirstOrDefault().winkelmand.ElementAt(i).aantal = model.winkelwagen[i].aantal;
             }
 
             db.SaveChanges();
 
 
 
-            return RedirectToAction("");
+            return RedirectToAction("Index", "Winkelwagen", new {productid = 0, winkelid = 0 });
         }
 
 
@@ -159,7 +223,7 @@ namespace FlowerPower.Controllers
         public ActionResult PlaatsDatumKiezen(PlaatsDatumModel model) {
 
             //update
-            
+
             model.winkels = PopulateWinkels();
             var selectedItem = model.winkels.Find(p => p.Value == model.Winkelcode.ToString());
             if (selectedItem != null)
@@ -170,10 +234,11 @@ namespace FlowerPower.Controllers
                 var bestelling = (from i in db.bestelling where i.bestellingid == model.bestellingid select i).FirstOrDefault();
                 bestelling.bestellinggeplaatst = model.datumgekozen;
                 bestelling.winkelcode = model.Winkelcode;
+                bestelling.winkel_winkelcode = (int)model.Winkelcode;
                 db.SaveChanges();
 
                 //return RedirectToAction("AfrondenFile", "Winkelwagen", new { bestelid = bestelling.bestellingid });
-                return RedirectToAction("Afronden","Winkelwagen", new {bestelid = bestelling.bestellingid });
+                return RedirectToAction("Afronden", "Winkelwagen", new { bestelid = bestelling.bestellingid });
 
 
             }
@@ -200,89 +265,56 @@ namespace FlowerPower.Controllers
                 // factuur uitdraaien
 
                 Flowerpower.Functions.Factuur factuur = new Flowerpower.Functions.Factuur();
-                byte[] stream= factuur.GenerateInvoice(bestelling);
-      
-                return File(stream, "application/pdf", "FlowerpowerFactuur"+bestelidd+".pdf");
+                byte[] stream = factuur.GenerateInvoice(bestelling);
+
+                return File(stream, "application/pdf", "FlowerpowerFactuur" + bestelidd + ".pdf");
                 //return View((from i in db.bestelling where i.bestellingid == bestelid select i).FirstOrDefault());
 
-                
+
 
             }
-<<<<<<< HEAD
-            winkelmand winkelmand = db.winkelmand.Find(id);
-            if ( winkelmand == null)
+            catch (Exception ex)
             {
-                return HttpNotFound();
-            }
-            return View(winkelmand);
-        }
-
-        // POST: Boeketten/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-      /*  [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "aantal")] winkelmand winkelmand)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(winkelmand).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("index");
-            }
-            return View(winkelmand);
-        }
-        */
-        // GET: Boeketten/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            producten producten = db.producten.Find(id);
-            if (producten == null)
-            {
-                return HttpNotFound();
-=======
-            catch (Exception ex) {
 
                 return View();
             }
+            
         }
 
-
-        public ActionResult Afronden(int? bestelid) {
-
-            var bestelling = from i in db.bestelling where i.bestellingid == bestelid select i;
-            return View(bestelling.FirstOrDefault());
-
-        }
+     
+      
 
 
-        public List<SelectListItem> PopulateWinkels() {
+            public ActionResult Afronden(int? bestelid) {
 
-            List<SelectListItem> item = new List<SelectListItem>();
-            var winkels = (from i in db.winkel select i).ToList();
+                var bestelling = from i in db.bestelling where i.bestellingid == bestelid select i;
+                return View(bestelling.FirstOrDefault());
 
-            foreach (var its in winkels) {
-
-                item.Add(new SelectListItem {
-
-                    Text = its.winkelstad,
-                    Value = its.winkelcode.ToString()
-                    
-
-
-                });
->>>>>>> ebdec68977a5cc72f1868b0e11742d78600dd19c
             }
 
-            return item;
+
+            public List<SelectListItem> PopulateWinkels() {
+
+                List<SelectListItem> item = new List<SelectListItem>();
+                var winkels = (from i in db.winkel select i).ToList();
+
+                foreach (var its in winkels) {
+
+                    item.Add(new SelectListItem {
+
+                        Text = its.winkelstad,
+                        Value = its.winkelcode.ToString()
+
+
+
+                    });
+                }
+
+                return item;
+
+            }
+
 
         }
 
-
     }
-   
-}

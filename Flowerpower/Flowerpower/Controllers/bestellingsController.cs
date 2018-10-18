@@ -17,6 +17,8 @@ namespace Flowerpower.Controllers
         // GET: bestellings
         public ActionResult Index()
         {
+            
+
             var bestelling = db.bestelling.Include(b => b.klant).Include(b => b.medewerkers).Include(b => b.winkel);
             return View(bestelling.ToList());
         }
