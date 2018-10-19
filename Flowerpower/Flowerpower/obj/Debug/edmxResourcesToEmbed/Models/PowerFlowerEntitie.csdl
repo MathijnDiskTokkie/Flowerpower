@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FlowerpowerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="bestelling">
+    <Key>
+      <PropertyRef Name="bestellingid" />
+    </Key>
+    <Property Name="bestellingid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="winkelcode" Type="Int32" />
+    <Property Name="afgehandelddoor" Type="Int32" />
+    <Property Name="bestellinggeplaatst" Type="DateTime" Precision="0" />
+    <Property Name="klant_klantid" Type="Int32" Nullable="false" />
+    <Property Name="winkel_winkelcode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="klant" Relationship="Self.FK_bestelling_klant" FromRole="bestelling" ToRole="klant" />
+    <NavigationProperty Name="medewerkers" Relationship="Self.FK_bestelling_medewerkers" FromRole="bestelling" ToRole="medewerkers" />
+    <NavigationProperty Name="winkel" Relationship="Self.FK_bestelling_winkel" FromRole="bestelling" ToRole="winkel" />
+    <NavigationProperty Name="winkelmand" Relationship="Self.FK_winkelmand_bestelling" FromRole="bestelling" ToRole="winkelmand" />
+  </EntityType>
+  <EntityType Name="klant">
+    <Key>
+      <PropertyRef Name="klantid" />
+    </Key>
+    <Property Name="naam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="achternaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="straatnaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="postcode" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="tussenvoegsel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="geboortedatum" Type="DateTime" Precision="0" />
+    <Property Name="woonplaats" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="klantid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="bestelling" Relationship="Self.FK_bestelling_klant" FromRole="klant" ToRole="bestelling" />
+  </EntityType>
+  <EntityType Name="medewerkers">
+    <Key>
+      <PropertyRef Name="medewerkerid" />
+    </Key>
+    <Property Name="medewerkerid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="medewerkernaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="medewerkerachternaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="winkelcode" Type="Int32" />
+    <NavigationProperty Name="bestelling" Relationship="Self.FK_bestelling_medewerkers" FromRole="medewerkers" ToRole="bestelling" />
+    <NavigationProperty Name="winkel" Relationship="Self.FK_medewerkers_winkel" FromRole="medewerkers" ToRole="winkel" />
+  </EntityType>
+  <EntityType Name="producten">
+    <Key>
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="productid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productnaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="prijs" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="productomschrijving" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="winkelmand" Relationship="Self.FK_winkelmand_producten" FromRole="producten" ToRole="winkelmand" />
+    <Property Name="gearchiveerd" Type="Boolean" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="winkel">
+    <Key>
+      <PropertyRef Name="winkelcode" />
+    </Key>
+    <Property Name="winkelcode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="winkelnaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="winkelstraatnaam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="winkelpostcode" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="winkelstad" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="winkeltelefoonnummer" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="winkelmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="bestelling" Relationship="Self.FK_bestelling_winkel" FromRole="winkel" ToRole="bestelling" />
+    <NavigationProperty Name="medewerkers" Relationship="Self.FK_medewerkers_winkel" FromRole="winkel" ToRole="medewerkers" />
+    <Property Name="winkelactief" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="winkelmand">
+    <Key>
+      <PropertyRef Name="bestelregelid" />
+    </Key>
+    <Property Name="bestellingid" Type="Int32" Nullable="false" />
+    <Property Name="productid" Type="Int32" />
+    <Property Name="aantal" Type="Int32" />
+    <Property Name="bestelregelid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="bestelling" Relationship="Self.FK_winkelmand_bestelling" FromRole="winkelmand" ToRole="bestelling" />
+    <NavigationProperty Name="producten" Relationship="Self.FK_winkelmand_producten" FromRole="winkelmand" ToRole="producten" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bestelling_klant">
+    <End Role="klant" Type="Self.klant" Multiplicity="1" />
+    <End Role="bestelling" Type="Self.bestelling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="klant">
+        <PropertyRef Name="klantid" />
+      </Principal>
+      <Dependent Role="bestelling">
+        <PropertyRef Name="klant_klantid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bestelling_medewerkers">
+    <End Role="medewerkers" Type="Self.medewerkers" Multiplicity="0..1" />
+    <End Role="bestelling" Type="Self.bestelling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medewerkers">
+        <PropertyRef Name="medewerkerid" />
+      </Principal>
+      <Dependent Role="bestelling">
+        <PropertyRef Name="afgehandelddoor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bestelling_winkel">
+    <End Role="winkel" Type="Self.winkel" Multiplicity="1" />
+    <End Role="bestelling" Type="Self.bestelling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="winkel">
+        <PropertyRef Name="winkelcode" />
+      </Principal>
+      <Dependent Role="bestelling">
+        <PropertyRef Name="winkel_winkelcode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_winkelmand_bestelling">
+    <End Role="bestelling" Type="Self.bestelling" Multiplicity="1" />
+    <End Role="winkelmand" Type="Self.winkelmand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bestelling">
+        <PropertyRef Name="bestellingid" />
+      </Principal>
+      <Dependent Role="winkelmand">
+        <PropertyRef Name="bestellingid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_medewerkers_winkel">
+    <End Role="winkel" Type="Self.winkel" Multiplicity="0..1" />
+    <End Role="medewerkers" Type="Self.medewerkers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="winkel">
+        <PropertyRef Name="winkelcode" />
+      </Principal>
+      <Dependent Role="medewerkers">
+        <PropertyRef Name="winkelcode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_winkelmand_producten">
+    <End Role="producten" Type="Self.producten" Multiplicity="0..1" />
+    <End Role="winkelmand" Type="Self.winkelmand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producten">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="winkelmand">
+        <PropertyRef Name="productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="FlowerpowerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+    <EntitySet Name="bestelling" EntityType="Self.bestelling" />
+    <EntitySet Name="klant" EntityType="Self.klant" />
+    <EntitySet Name="medewerkers" EntityType="Self.medewerkers" />
+    <EntitySet Name="producten" EntityType="Self.producten" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="winkel" EntityType="Self.winkel" />
+    <EntitySet Name="winkelmand" EntityType="Self.winkelmand" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bestelling_klant" Association="Self.FK_bestelling_klant">
+      <End Role="klant" EntitySet="klant" />
+      <End Role="bestelling" EntitySet="bestelling" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bestelling_medewerkers" Association="Self.FK_bestelling_medewerkers">
+      <End Role="medewerkers" EntitySet="medewerkers" />
+      <End Role="bestelling" EntitySet="bestelling" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bestelling_winkel" Association="Self.FK_bestelling_winkel">
+      <End Role="winkel" EntitySet="winkel" />
+      <End Role="bestelling" EntitySet="bestelling" />
+    </AssociationSet>
+    <AssociationSet Name="FK_winkelmand_bestelling" Association="Self.FK_winkelmand_bestelling">
+      <End Role="bestelling" EntitySet="bestelling" />
+      <End Role="winkelmand" EntitySet="winkelmand" />
+    </AssociationSet>
+    <AssociationSet Name="FK_medewerkers_winkel" Association="Self.FK_medewerkers_winkel">
+      <End Role="winkel" EntitySet="winkel" />
+      <End Role="medewerkers" EntitySet="medewerkers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_winkelmand_producten" Association="Self.FK_winkelmand_producten">
+      <End Role="producten" EntitySet="producten" />
+      <End Role="winkelmand" EntitySet="winkelmand" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

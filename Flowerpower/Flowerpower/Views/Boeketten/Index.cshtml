@@ -4,6 +4,12 @@
     ViewBag.Title = "Index";
 }
 
+@*<div class="navbar-header pull-left">
+    <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+        <img src="~/Content/Images/loogo.png" alt="Site Logo" id="site-logo" class="img-responsive" />
+    </a>
+</div>*@
+
 <h2>Index</h2>
 
 <p>
@@ -26,24 +32,25 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.productnaam)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prijs)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.productomschrijving)
-        </td>
-        <td>
-            @Html.EditorFor(modelItem => item.gearchiveerd)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.productid })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.productnaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prijs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productomschrijving)
+            </td>
+            <td>
+                @Html.EditorFor(modelItem => item.gearchiveerd)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.productid })
+            </td>
+        </tr>
+    }
 
 </table>
