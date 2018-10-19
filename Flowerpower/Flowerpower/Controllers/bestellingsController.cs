@@ -15,8 +15,13 @@ namespace Flowerpower.Controllers
         private FlowerpowerEntities db = new FlowerpowerEntities();
 
         // GET: bestellings
+<<<<<<< HEAD
         public ActionResult Index() { 
         
+=======
+        public ActionResult Index()
+        {
+>>>>>>> parent of 0a538ef... mooiste update van je welkomst
             var bestelling = db.bestelling.Include(b => b.klant).Include(b => b.medewerkers).Include(b => b.winkel);
             return View(bestelling.ToList());
         }
