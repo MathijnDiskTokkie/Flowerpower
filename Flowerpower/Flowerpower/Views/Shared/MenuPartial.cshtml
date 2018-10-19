@@ -13,13 +13,13 @@
 
         <div class="navbar-header pull-left">
             <a class="navbar-brand" href="@Url.Action("Index", "Home")">
-                <img src="~/Content/Images/logoo.png" alt="Site Logo" id="site-logo" class="img-responsive" />
+                <img src="~/Content/Images/loogo.png" alt="Site Logo" id="site-logo" class="img-responsive" />
             </a>
         </div>
 
 
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav nav navbar-nav navbar-left">
                 @if (ViewContext.HttpContext.User.IsInRole("Manager"))
                 {
                     <li>@Html.ActionLink("Boeketten", "index", "Boeketten")</li>

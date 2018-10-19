@@ -14,14 +14,20 @@ namespace FlowerPower.Controllers
         FlowerpowerEntities db = new FlowerpowerEntities();
 
         //private List<winkelmand> shoppingCartList = new List<winkelmand>();
-        public ActionResult deleteItem(int? productid) {
+        //public ActionResult deleteItem(int? productid) {
 
-            return RedirectToAction("Index","Home");
-        }
 
+        //    return RedirectToAction("Index","Home");
+        //}
+
+
+      
+
+
+      
 
         // GET: Cart
-        public ActionResult Index(int productid, int winkelid)
+        public ActionResult Index(int productid , int winkelid)
         {
             int klantid = (from i in db.klant where i.email == User.Identity.Name select i.klantid).FirstOrDefault();
 
@@ -35,6 +41,15 @@ namespace FlowerPower.Controllers
 
                 HttpCookie cookie = HttpContext.Request.Cookies.Get("Winkelmand");
 
+                if (productid != 0 && winkelid != 0)
+                {
+
+                    if (cookie != null)
+
+               
+
+
+               
 
                 if (cookie != null)
                 {
@@ -43,6 +58,9 @@ namespace FlowerPower.Controllers
 
                     var aant = from i in db.winkelmand where i.bestellingid == bestll && i.productid == productid select i;
                     if (aant.Any())
+
+
+
                     {
                         int nieuwe = (int)(aant.FirstOrDefault().aantal) + 1;
                         aant.FirstOrDefault().aantal = nieuwe;
@@ -57,6 +75,106 @@ namespace FlowerPower.Controllers
                         wk.bestellingid = Convert.ToInt16(cookie.Value);
 
                         db.winkelmand.Add(wk);
+
+
+             HttpCookie cookie1 = new HttpCookie("Winkelmand");
+                        cookie1.Value = "" + bes.bestellingid; // bestelling id
+                        HttpContext.Response.SetCookie(cookie1);
+            }
+
+
+                    db.SaveChanges();
+
+                }
+                else
+                {
+
+                    bestelling bes = new bestelling();
+                    bes.winkel_winkelcode = winkelid;
+                    bes.winkelcode = winkelid;
+                    bes.klant_klantid = klantid;
+                    bes.bestellinggeplaatst = DateTime.Today;
+                    db.bestelling.Add(bes);
+                    db.SaveChanges();
+
+
+                    winkelmand wk = new winkelmand();
+                    wk.productid = productid;
+                    wk.aantal = 1;
+                    wk.bestellingid = bes.bestellingid;
+
+
+
+                    db.winkelmand.Add(wk);
+                    db.SaveChanges();
+
+
+                        return View(winkelwagen);
+
+                    HttpCookie cookie1 = new HttpCookie("Winkelmand");
+                    cookie1.Value = "" + bes.bestellingid; // bestelling id
+                    HttpContext.Response.SetCookie(cookie1);
+
+
+                    List<winkelmand> winkelwagen = (from i in db.winkelmand where i.bestellingid == bes.bestellingid select i).ToList();
+
+                    foreach (var item in winkelwagen)
+                    {
+
+                        int bestllj = Convert.ToInt16(cookie.Value);
+                        List<winkelmand> winkelwagen = (from i in db.winkelmand where i.bestellingid == bestllj select i).ToList();
+
+
+                        item.producten = (from i in db.producten where i.productid == item.productid select i).FirstOrDefault();
+                    }
+
+
+
+
+
+                        return View(winkelwagen);
+
+                    }
+
+
+                    return View(winkelwagen);
+
+
+
+                }
+                if (cookie != null)
+                {
+
+
+                    HttpCookie cookies = HttpContext.Request.Cookies.Get("Winkelmand");
+
+                    if (cookies != null)
+                    {
+                        int bestllj = Convert.ToInt16(cookies.Value);
+                        List<winkelmand> winkelwagen = (from i in db.winkelmand where i.bestellingid == bestllj select i).ToList();
+
+                        foreach (var item in winkelwagen)
+                        {
+
+                            item.producten = (from i in db.producten where i.productid == item.productid select i).FirstOrDefault();
+                        }
+
+                        return View(winkelwagen);
+
+                    }
+                    else
+                    {
+                        return Content("<script language='javascript' type='text/javascript'>alert('Winkelmand is leeg');window.location = '/Home/Index';</script>");
+                    }
+
+                    int bestllj = Convert.ToInt16(cookie.Value);
+                    List<winkelmand> winkelwagen = (from i in db.winkelmand where i.bestellingid == bestllj select i).ToList();
+
+                    foreach (var item in winkelwagen)
+                    {
+
+                        item.producten = (from i in db.producten where i.productid == item.productid select i).FirstOrDefault();
+                    }
 
                     }
 
@@ -114,13 +232,17 @@ namespace FlowerPower.Controllers
 
                     return View(winkelwagen);
 
-                }
 
+                    return View(winkelwagen);
+
+
+                }
             }
             else
             {
 
-                RedirectToAction("Register", "Account", null);
+
+                return RedirectToAction("Register", "Account", null);
             }
 
             return null;
@@ -131,13 +253,40 @@ namespace FlowerPower.Controllers
         public ActionResult Index(List<Flowerpower.Models.winkelmand> model)
         {
 
+                RedirectToAction("Register", "Account", null);            }
+
+            return null;
+            
+        }
+
+        [HttpPost]
+        public ActionResult Index(List<Flowerpower.Models.winkelmand> model) {
+
+
+                RedirectToAction("Register", "Account", null);            }
+
+            return null;
+            
+        }
+
+        [HttpPost]
+        public ActionResult Index(List<Flowerpower.Models.winkelmand> model) {
+
+
             HttpCookie cookie = HttpContext.Request.Cookies.Get("Winkelmand");
             int bestellingid = Convert.ToInt16(cookie.Value);
 
             var dd = from i in db.bestelling where i.bestellingid == bestellingid select i;
 
+
             for (int i = 0; i < model.Count; i++)
             {
+
+            for (int  i = 0; i < model.Count; i++) {
+
+
+            for (int  i = 0; i < model.Count; i++) {
+
                 dd.FirstOrDefault().winkelmand.ElementAt(i).aantal = model[i].aantal;
             }
 
@@ -167,7 +316,7 @@ namespace FlowerPower.Controllers
         {
 
             //update
-
+            
             model.winkels = PopulateWinkels();
             var selectedItem = model.winkels.Find(p => p.Value == model.Winkelcode.ToString());
             if (selectedItem != null)
@@ -181,7 +330,7 @@ namespace FlowerPower.Controllers
                 db.SaveChanges();
 
                 //return RedirectToAction("AfrondenFile", "Winkelwagen", new { bestelid = bestelling.bestellingid });
-                return RedirectToAction("Afronden", "Winkelwagen", new { bestelid = bestelling.bestellingid });
+                return RedirectToAction("Afronden","Winkelwagen", new {bestelid = bestelling.bestellingid });
 
 
             }
@@ -208,19 +357,56 @@ namespace FlowerPower.Controllers
                 // factuur uitdraaien
 
                 Flowerpower.Functions.Factuur factuur = new Flowerpower.Functions.Factuur();
-                byte[] stream = factuur.GenerateInvoice(bestelling);
-
-                return File(stream, "application/pdf", "FlowerpowerFactuur" + bestelidd + ".pdf");
+                byte[] stream= factuur.GenerateInvoice(bestelling);
+      
+                return File(stream, "application/pdf", "FlowerpowerFactuur"+bestelidd+".pdf");
                 //return View((from i in db.bestelling where i.bestellingid == bestelid select i).FirstOrDefault());
 
-
+                
 
             }
-            catch (Exception ex)
+
+            winkelmand winkelmand = db.winkelmand.Find(id);
+            if ( winkelmand == null)
             {
+                return HttpNotFound();
+            }
+            return View(winkelmand);
+        }
+
+        // POST: Boeketten/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+      /*  [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "aantal")] winkelmand winkelmand)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(winkelmand).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("index");
+            }
+            return View(winkelmand);
+        }
+        */
+        // GET: Boeketten/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            producten producten = db.producten.Find(id);
+            if (producten == null)
+            {
+                return HttpNotFound();
+
+            catch (Exception ex) {
 
                 return View();
             }
+
 
         }
 
@@ -252,9 +438,65 @@ namespace FlowerPower.Controllers
                     Text = its.winkelstad,
                     Value = its.winkelcode.ToString()
 
+        }
+
+
+        public ActionResult Afronden(int? bestelid) {
+
+            var bestelling = from i in db.bestelling where i.bestellingid == bestelid select i;
+            return View(bestelling.FirstOrDefault());
+
+        }
+
+
+        public List<SelectListItem> PopulateWinkels() {
+
+            List<SelectListItem> item = new List<SelectListItem>();
+            var winkels = (from i in db.winkel select i).ToList();
+
+            foreach (var its in winkels) {
+
+
+                item.Add(new SelectListItem {
 
 
                 });
+
+        }
+
+
+        public ActionResult Afronden(int? bestelid) {
+
+            var bestelling = from i in db.bestelling where i.bestellingid == bestelid select i;
+            return View(bestelling.FirstOrDefault());
+
+        }
+
+
+        public List<SelectListItem> PopulateWinkels() {
+
+            List<SelectListItem> item = new List<SelectListItem>();
+            var winkels = (from i in db.winkel select i).ToList();
+
+            foreach (var its in winkels) {
+
+                item.Add(new SelectListItem {
+
+                    Text = its.winkelstad,
+                    Value = its.winkelcode.ToString()
+                    
+
+
+                });
+
+
+                    Text = its.winkelstad,
+                    Value = its.winkelcode.ToString()
+                    
+
+
+                });
+
             }
 
             return item;
@@ -263,5 +505,7 @@ namespace FlowerPower.Controllers
 
 
     }
+
+
 
 }
