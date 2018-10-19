@@ -1,98 +1,82 @@
-﻿@model List<Flowerpower.Models.winkelmand>
+﻿@model Flowerpower.Models.Winkelwagen
 
 
 @{
     ViewBag.Title = "Winkelwagen";
 
-    
+
 }
 
 <h2>Winkelwagen</h2>
-    
-<div class="row">
-    <div class="col-sm-12">
-        <table class="table">
-            <tr>
-                <th>Item</th>
 
-                <th>Omschrijving</th>
+   
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table">
+                    <tr>
+                        <th>Item</th>
 
-                <th>Prijs</th>
+                        <th>Omschrijving</th>
 
-                <th>Aantal</th>
+                        <th>Prijs</th>
 
-                <th>Subtotaal</th>
-            </tr>
-            @using (Html.BeginForm("Index", "Winkelwagen", FormMethod.Post))
-            {
+                        <th>Aantal</th>
 
-                decimal? totaalbedrag = 0;
-                for (int i = 0; i < Model.Count; i++)
-                {
+                        <th>Subtotaal</th>
+                    </tr>
 
+                    @using (Html.BeginForm("Index", "Winkelwagen", FormMethod.Post))
+                    {
+                       
+                            for (int i = 0; i < Model.winkelwagen.Count; i++)
+                            {
+                    <tr>
 
-            <tr>
-
-                <td> @Model[i].producten.productnaam </td>
-                <td> @Model[i].producten.productomschrijving </td>
-                <td> @Model[i].producten.prijs </td>
-                <td> @Html.EditorFor(model => model[i].aantal) </td>
-                <td>@(Model[i].aantal * Model[i].producten.prijs) </td>
-
-                @{var calc = Model[i].aantal * Model[i].producten.prijs}
-                @{}
-                
-
-                <td>
-                    <button type="submit" class="btn btn-success">Opslaan</button>
-                </td>
+                        <td></td>
+                        <td>@Model.winkelwagen[i].producten.productomschrijving</td>
+                        <td>@Model.winkelwagen[i].producten.prijs</td>
+                        <td>@Html.EditorFor(model => model.winkelwagen[i].aantal)</td>
+                        <td>@(Model.winkelwagen[i].aantal * Model.winkelwagen[i].producten.prijs)</td>
+                        <td>
+                            <button type="submit" class="btn btn-success">Opslaan</button>
+                        </td>
+                    </tr>
+                            }
 
 
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><h5 style="font-weight: bold">TOTAAL </h5></td>
 
-            </tr>
 
-                        ViewBag.Totaal = calc;
-
-
-
+                        <td>
+                            <h5 style="font-weight: bold">@Model.totaal</h5>
+                        </td>
+                    </tr>
+                        
 
                     }
 
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><h5 style="font-weight: bold">TOTAAL </h5></td>
+                </table>
+            </div>
+        </div>
+    
 
-
-                <td>
-                    <h5 style="font-weight: bold">
-                        @ViewBag.Totaal
-
-
-                </h5>
-            </td>
-
-
-
-
-        </tr>
-        </table>
-    </div>
-</div>
 <div class="row" style="margin-top: 20px;">
 
-    <div class="col-sm-6">
+        <div class="col-sm-6">
 
 
 
+        </div>
+        <div class="col-sm-6">
+
+            <a href="@Url.Action("PlaatsDatumKiezen", "Winkelwagen", new { bestelid = Model.winkelwagen.FirstOrDefault().bestellingid }, null)"><button type="button" class="btn btn-success" style="float: right;">Afronden</button></a>
+
+
+        </div>
     </div>
-    <div class="col-sm-6">
-
-        <a href="@Url.Action("PlaatsDatumKiezen", "Winkelwagen", new { bestelid = Model.FirstOrDefault().bestellingid }, null)"><button type="button" class="btn btn-success" style="float: right;">Afronden</button></a>
-
-
-    </div>
-</div>
 
 
