@@ -14,7 +14,7 @@
     @Html.AntiForgeryToken()
 
 <ul class="nav navbar-nav navbar-right">
-    <li>@Html.ActionLink(" ", "Index", "Winkelwagen", routeValues: null, htmlAttributes: new { id = "productid", @class = "fas fa-shopping-cart" })</li>
+    <li>@Html.ActionLink(" ", "Index", "Winkelwagen", routeValues: new { productid = 0, winkelid = 0 }, htmlAttributes: new { id = "winkelmandid", @class = "fas fa-shopping-cart" })</li>
 
     <li>
         @Html.ActionLink("Manage account", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
@@ -26,7 +26,7 @@
 else
 {
 <ul class="nav navbar-nav navbar-right">
-    <li>@Html.ActionLink(" ", "Index", "Winkelwagen", routeValues: null, htmlAttributes: new { id = "winkelmandid", @class = "fas fa-shopping-cart" })</li>
+
 
     <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
     <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
