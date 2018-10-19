@@ -11,34 +11,15 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Flowerpower.Models;
-using SendGrid;
-using SendGrid.Helpers.Mail;
 
 namespace Flowerpower
 {
     public class EmailService : IIdentityMessageService
     {
-        public async Task SendAsync(IdentityMessage message)
+        public Task SendAsync(IdentityMessage message)
         {
-            string key = @"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";
-
-            var client = new SendGridClient(key);
-            var from = new EmailAddress("psatheeskumar01@student.rocvantwente.nl", "FlowerPower Team");
-
-            var subject = message.Subject;
-            var to = new EmailAddress(message.Destination, "New User");
-            var plainTextContent = message.Body;
-            var htmlContent = message.Body;
-
-
-            var email = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-
-            await client.SendEmailAsync(email);
-
-
-
             // Plug in your email service here to send an email.
-            //return Task.FromResult(0);
+            return Task.FromResult(0);
         }
     }
 
