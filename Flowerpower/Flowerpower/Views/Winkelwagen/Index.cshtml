@@ -1,4 +1,5 @@
-﻿@model Flowerpower.Models.Winkelwagen
+﻿@using FlowerPower.Controllers;
+@model Flowerpower.Models.Winkelwagen
 
 
 @{
@@ -6,6 +7,9 @@
 
 
 }
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
 <h2>Winkelwagen</h2>
 
@@ -39,6 +43,11 @@
                         <td>@(Model.winkelwagen[i].aantal * Model.winkelwagen[i].producten.prijs)</td>
                         <td>
                             <button type="submit" class="btn btn-success">Opslaan</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="@{
+                              ((WinkelwagenController)this.ViewContext.Controller).deleteItem(Model.winkelwagen[i].productid);
+                            }"><i style="color: #fff" class="far fa-trash-alt"></i></button>
                         </td>
                     </tr>
                             }

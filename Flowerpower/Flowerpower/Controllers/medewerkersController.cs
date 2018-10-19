@@ -10,108 +10,112 @@ using Flowerpower.Models;
 
 namespace Flowerpower.Controllers
 {
-    [Authorize(Roles = "Manager")]
-    public class BoekettenController : Controller
+    public class medewerkersController : Controller
     {
         private FlowerpowerEntities db = new FlowerpowerEntities();
 
-        // GET: Boeketten
+        // GET: medewerkers
         public ActionResult Index()
         {
-            return View(db.producten.ToList());
+            var medewerkers = db.medewerkers.Include(m => m.winkel);
+            return View(medewerkers.ToList());
         }
 
-        // GET: Boeketten/Details/5
+        // GET: medewerkers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            producten producten = db.producten.Find(id);
-            if (producten == null)
+            medewerkers medewerkers = db.medewerkers.Find(id);
+            if (medewerkers == null)
             {
                 return HttpNotFound();
             }
-            return View(producten);
+            return View(medewerkers);
         }
 
-        // GET: Boeketten/Create
+        // GET: medewerkers/Create
         public ActionResult Create()
         {
+            ViewBag.winkelcode = new SelectList(db.winkel, "winkelcode", "winkelnaam");
             return View();
         }
 
-        // POST: Boeketten/Create
+        // POST: medewerkers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "productid,productnaam,prijs,productomschrijving,gearchiveerd, url")] producten producten)
+        public ActionResult Create([Bind(Include = "medewerkerid,medewerkernaam,medewerkerachternaam,winkelcode")] medewerkers medewerkers)
         {
             if (ModelState.IsValid)
             {
-                db.producten.Add(producten);
+                db.medewerkers.Add(medewerkers);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(producten);
+            ViewBag.winkelcode = new SelectList(db.winkel, "winkelcode", "winkelnaam", medewerkers.winkelcode);
+            return View(medewerkers);
         }
 
-        // GET: Boeketten/Edit/5
+        // GET: medewerkers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            producten producten = db.producten.Find(id);
-            if (producten == null)
+            medewerkers medewerkers = db.medewerkers.Find(id);
+            if (medewerkers == null)
             {
                 return HttpNotFound();
             }
-            return View(producten);
+            ViewBag.winkelcode = new SelectList(db.winkel, "winkelcode", "winkelnaam", medewerkers.winkelcode);
+            return View(medewerkers);
         }
 
-        // POST: Boeketten/Edit/5
+        // POST: medewerkers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "productid,productnaam,prijs,productomschrijving,gearchiveerd, url")] producten producten)
+        public ActionResult Edit([Bind(Include = "medewerkerid,medewerkernaam,medewerkerachternaam,winkelcode")] medewerkers medewerkers)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(producten).State = EntityState.Modified;
+                db.Entry(medewerkers).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(producten);
+            ViewBag.winkelcode = new SelectList(db.winkel, "winkelcode", "winkelnaam", medewerkers.winkelcode);
+            return View(medewerkers);
         }
 
-        // GET: Boeketten/Delete/5
+        // GET: medewerkers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            producten producten = db.producten.Find(id);
-            if (producten == null)
+            medewerkers medewerkers = db.medewerkers.Find(id);
+            if (medewerkers == null)
             {
                 return HttpNotFound();
             }
-            return View(producten);
+            return View(medewerkers);
         }
 
-        // POST: Boeketten/Delete/5
+        // POST: medewerkers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            producten producten = db.producten.Find(id);
-            db.producten.Remove(producten);
+            medewerkers medewerkers = db.medewerkers.Find(id);
+            db.medewerkers.Remove(medewerkers);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

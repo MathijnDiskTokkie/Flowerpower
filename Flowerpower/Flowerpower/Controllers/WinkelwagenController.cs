@@ -14,7 +14,10 @@ namespace FlowerPower.Controllers
         FlowerpowerEntities db = new FlowerpowerEntities();
 
         //private List<winkelmand> shoppingCartList = new List<winkelmand>();
+        public ActionResult deleteItem(int? productid) {
 
+            return RedirectToAction("Index","Home");
+        }
 
 
         // GET: Cart
