@@ -1,6 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿@using FlowerPower.Controllers;
 @model Flowerpower.Models.Winkelwagen
+=======
+﻿@model List<Flowerpower.Models.winkelmand>
+>>>>>>> parent of 0a538ef... mooiste update van je welkomst
 =======
 ﻿@model List<Flowerpower.Models.winkelmand>
 >>>>>>> parent of 0a538ef... mooiste update van je welkomst
@@ -22,6 +26,7 @@
         <table class="table">
             <tr>
                 <th>Item</th>
+<<<<<<< HEAD
 
                 <th>Omschrijving</th>
 
@@ -101,8 +106,52 @@
                 <td>
                     <button type="submit" class="btn btn-success">Opslaan</button>
                 </td>
+=======
+
+                <th>Omschrijving</th>
+
+                <th>Prijs</th>
+
+                <th>Aantal</th>
+
+                <th>Subtotaal</th>
+            </tr>
+            @using (Html.BeginForm("Index", "Winkelwagen", FormMethod.Post))
+            {
+
+                decimal? totaalbedrag = 0;
+                for (int i = 0; i < Model.Count; i++)
+                {
 
 
+            <tr>
+
+                <td> @Model[i].producten.productnaam </td>
+                <td> @Model[i].producten.productomschrijving </td>
+                <td> @Model[i].producten.prijs </td>
+                <td> @Html.EditorFor(model => model[i].aantal) </td>
+                <td>@(Model[i].aantal * Model[i].producten.prijs) </td>
+
+                @{var calc = Model[i].aantal * Model[i].producten.prijs}
+                @{}
+                
+
+                <td>
+                    <button type="submit" class="btn btn-success">Opslaan</button>
+                </td>
+
+
+
+            </tr>
+
+                        }ViewBag.Totaal = total;
+
+
+
+>>>>>>> parent of 0a538ef... mooiste update van je welkomst
+
+
+<<<<<<< HEAD
 
             </tr>
 
@@ -136,6 +185,14 @@
                 <td></td>
                 <td><h5 style="font-weight: bold">TOTAAL </h5></td>
 
+=======
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><h5 style="font-weight: bold">TOTAAL </h5></td>
+
+>>>>>>> parent of 0a538ef... mooiste update van je welkomst
 
                 <td>
                     <h5 style="font-weight: bold">
@@ -155,11 +212,15 @@
 <div class="row" style="margin-top: 20px;">
 
     <div class="col-sm-6">
+<<<<<<< HEAD
+>>>>>>> parent of 0a538ef... mooiste update van je welkomst
+=======
 >>>>>>> parent of 0a538ef... mooiste update van je welkomst
 
 
 <div class="row" style="margin-top: 20px;">
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     <div class="col-sm-6">
 
@@ -167,6 +228,16 @@
 
     </div>
     <div class="col-sm-6">
+=======
+    </div>
+    <div class="col-sm-6">
+
+        <a href="@Url.Action("PlaatsDatumKiezen", "Winkelwagen", new { bestelid = Model.FirstOrDefault().bestellingid }, null)"><button type="button" class="btn btn-success" style="float: right;">Afronden</button></a>
+
+
+    </div>
+</div>
+>>>>>>> parent of 0a538ef... mooiste update van je welkomst
 
         <a href="@Url.Action("PlaatsDatumKiezen", "Winkelwagen", new { bestelid = Model.winkelwagen.FirstOrDefault().bestellingid }, null)"><button type="button" class="btn btn-success" style="float: right;">Afronden</button></a>
 =======

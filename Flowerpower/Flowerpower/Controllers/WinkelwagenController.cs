@@ -17,9 +17,13 @@ namespace FlowerPower.Controllers
         //public ActionResult deleteItem(int? productid) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         //    return RedirectToAction("Index","Home");
         //}
 
+=======
+      
+>>>>>>> parent of 0a538ef... mooiste update van je welkomst
 =======
       
 >>>>>>> parent of 0a538ef... mooiste update van je welkomst
@@ -39,6 +43,7 @@ namespace FlowerPower.Controllers
 
                 HttpCookie cookie = HttpContext.Request.Cookies.Get("Winkelmand");
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if (productid != 0 && winkelid != 0)
                 {
 
@@ -46,6 +51,10 @@ namespace FlowerPower.Controllers
 =======
                
 
+=======
+               
+
+>>>>>>> parent of 0a538ef... mooiste update van je welkomst
                 if (cookie != null)
                 {
 
@@ -53,6 +62,9 @@ namespace FlowerPower.Controllers
 
                     var aant = from i in db.winkelmand where i.bestellingid == bestll && i.productid == productid select i;
                     if (aant.Any())
+<<<<<<< HEAD
+>>>>>>> parent of 0a538ef... mooiste update van je welkomst
+=======
 >>>>>>> parent of 0a538ef... mooiste update van je welkomst
                     {
                         int nieuwe = (int)(aant.FirstOrDefault().aantal) + 1;
@@ -69,6 +81,7 @@ namespace FlowerPower.Controllers
 
                         db.winkelmand.Add(wk);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
                         HttpCookie cookie1 = new HttpCookie("Winkelmand");
                         cookie1.Value = "" + bes.bestellingid; // bestelling id
@@ -170,6 +183,63 @@ namespace FlowerPower.Controllers
 
                         item.producten = (from i in db.producten where i.productid == item.productid select i).FirstOrDefault();
                     }
+=======
+                    }
+
+                    db.SaveChanges();
+
+                }
+                else
+                {
+
+                    bestelling bes = new bestelling();
+                    bes.winkel_winkelcode = winkelid;
+                    bes.winkelcode = winkelid;
+                    bes.klant_klantid = klantid;
+                    bes.bestellinggeplaatst = DateTime.Today;
+                    db.bestelling.Add(bes);
+                    db.SaveChanges();
+
+                    winkelmand wk = new winkelmand();
+                    wk.productid = productid;
+                    wk.aantal = 1;
+                    wk.bestellingid = bes.bestellingid;
+
+
+                    db.winkelmand.Add(wk);
+                    db.SaveChanges();
+
+                    HttpCookie cookie1 = new HttpCookie("Winkelmand");
+                    cookie1.Value = "" + bes.bestellingid; // bestelling id
+                    HttpContext.Response.SetCookie(cookie1);
+
+                    List<winkelmand> winkelwagen = (from i in db.winkelmand where i.bestellingid == bes.bestellingid select i).ToList();
+
+                    foreach (var item in winkelwagen)
+                    {
+
+                        item.producten = (from i in db.producten where i.productid == item.productid select i).FirstOrDefault();
+                    }
+
+
+
+                    return View(winkelwagen);
+
+
+                }
+                if (cookie != null)
+                {
+                    int bestllj = Convert.ToInt16(cookie.Value);
+                    List<winkelmand> winkelwagen = (from i in db.winkelmand where i.bestellingid == bestllj select i).ToList();
+
+                    foreach (var item in winkelwagen)
+                    {
+
+                        item.producten = (from i in db.producten where i.productid == item.productid select i).FirstOrDefault();
+                    }
+
+                    return View(winkelwagen);
+>>>>>>> parent of 0a538ef... mooiste update van je welkomst
 
                     return View(winkelwagen);
 >>>>>>> parent of 0a538ef... mooiste update van je welkomst
@@ -179,6 +249,7 @@ namespace FlowerPower.Controllers
             else
             {
 
+<<<<<<< HEAD
 <<<<<<< HEAD
                 return RedirectToAction("Register", "Account", null);
             }
@@ -200,6 +271,16 @@ namespace FlowerPower.Controllers
         [HttpPost]
         public ActionResult Index(List<Flowerpower.Models.winkelmand> model) {
 >>>>>>> parent of 0a538ef... mooiste update van je welkomst
+=======
+                RedirectToAction("Register", "Account", null);            }
+
+            return null;
+            
+        }
+
+        [HttpPost]
+        public ActionResult Index(List<Flowerpower.Models.winkelmand> model) {
+>>>>>>> parent of 0a538ef... mooiste update van je welkomst
 
             HttpCookie cookie = HttpContext.Request.Cookies.Get("Winkelmand");
             int bestellingid = Convert.ToInt16(cookie.Value);
@@ -207,8 +288,12 @@ namespace FlowerPower.Controllers
             var dd = from i in db.bestelling where i.bestellingid == bestellingid select i;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             for (int i = 0; i < model.Count; i++)
             {
+=======
+            for (int  i = 0; i < model.Count; i++) {
+>>>>>>> parent of 0a538ef... mooiste update van je welkomst
 =======
             for (int  i = 0; i < model.Count; i++) {
 >>>>>>> parent of 0a538ef... mooiste update van je welkomst
@@ -332,6 +417,7 @@ namespace FlowerPower.Controllers
                 return View();
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         }
 
@@ -362,8 +448,29 @@ namespace FlowerPower.Controllers
 
                     Text = its.winkelstad,
                     Value = its.winkelcode.ToString()
+=======
+        }
 
 
+        public ActionResult Afronden(int? bestelid) {
+
+            var bestelling = from i in db.bestelling where i.bestellingid == bestelid select i;
+            return View(bestelling.FirstOrDefault());
+
+        }
+
+
+        public List<SelectListItem> PopulateWinkels() {
+
+            List<SelectListItem> item = new List<SelectListItem>();
+            var winkels = (from i in db.winkel select i).ToList();
+
+            foreach (var its in winkels) {
+>>>>>>> parent of 0a538ef... mooiste update van je welkomst
+
+                item.Add(new SelectListItem {
+
+<<<<<<< HEAD
 
                 });
 =======
@@ -395,6 +502,15 @@ namespace FlowerPower.Controllers
                 });
 >>>>>>> ebdec68977a5cc72f1868b0e11742d78600dd19c
 >>>>>>> parent of 0a538ef... mooiste update van je welkomst
+=======
+                    Text = its.winkelstad,
+                    Value = its.winkelcode.ToString()
+                    
+
+
+                });
+>>>>>>> ebdec68977a5cc72f1868b0e11742d78600dd19c
+>>>>>>> parent of 0a538ef... mooiste update van je welkomst
             }
 
             return item;
@@ -404,7 +520,11 @@ namespace FlowerPower.Controllers
 
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> parent of 0a538ef... mooiste update van je welkomst
 =======
    
 >>>>>>> parent of 0a538ef... mooiste update van je welkomst
