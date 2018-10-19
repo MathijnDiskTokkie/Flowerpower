@@ -84,14 +84,12 @@ namespace Flowerpower.Controllers
             ViewBag.winkel_winkelcode = new SelectList(db.winkel, "winkelcode", "winkelnaam", bestelling.winkel_winkelcode);
             return View(bestelling);
         }
-
         // POST: bestellings/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        // DIT WERKT NOG NIET GOED!!!
-        public ActionResult Edit([Bind(Include = "afgehandelddoor,bestellinggeplaatst")] bestelling bestelling)
+        public ActionResult Edit([Bind(Include = "bestellingid,winkelcode,klantcode,afgehandelddoor,bestellinggeplaatst,klant_klantid,winkel_winkelcode")] bestelling bestelling)
         {
             if (ModelState.IsValid)
             {
