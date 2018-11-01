@@ -142,14 +142,19 @@ div#flowerpover-div {
 }
 
 #site-logo {
-    height: 150px;
+    height: 145px;
     width: 200px;
     position: absolute;
-    margin-top: -72px;
-    /* margin-left: 360px; */
+    margin-top: -110px;
     transform: translateX(-50%);
-    left: 12%;
+    left: 50%;
+    background-color: #990000;
 }
+
+/*ul.nav.navbar-nav.nav.navbar-nav.navbar-left {
+    position: absolute;
+    right: 47%;
+}*/
 
 
 

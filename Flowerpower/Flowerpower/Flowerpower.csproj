@@ -354,23 +354,19 @@
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\bestellings\Create.cshtml" />
-    <Content Include="Views\bestellings\Delete.cshtml" />
-    <Content Include="Views\bestellings\Details.cshtml" />
     <Content Include="Views\bestellings\Edit.cshtml" />
     <Content Include="Views\bestellings\Index.cshtml" />
     <Content Include="Views\Boeketten\Create.cshtml" />
-    <Content Include="Views\Boeketten\Delete.cshtml" />
-    <Content Include="Views\Boeketten\Details.cshtml" />
     <Content Include="Views\Boeketten\Edit.cshtml" />
     <Content Include="Views\Boeketten\Index.cshtml" />
     <Content Include="Views\Winkelwagen\Index.cshtml" />
     <Content Include="Views\Winkelwagen\Afronden.cshtml" />
     <Content Include="Views\Winkelwagen\PlaatsDatumKiezen.cshtml" />
     <Content Include="Views\winkels\Create.cshtml" />
-    <Content Include="Views\winkels\Delete.cshtml" />
     <Content Include="Views\winkels\Edit.cshtml" />
     <Content Include="Views\winkels\Index.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\medewerkers\Create.cshtml" />
     <Content Include="Views\medewerkers\Delete.cshtml" />
     <Content Include="Views\medewerkers\Details.cshtml" />
@@ -381,6 +377,14 @@
     <Content Include="Views\klants\Details.cshtml" />
     <Content Include="Views\klants\Edit.cshtml" />
     <Content Include="Views\klants\Index.cshtml" />
+=======
+    <Content Include="Views\Winkelwagen\Delete.cshtml" />
+    <Content Include="Views\Winkelwagen\Edit.cshtml" />
+    <Content Include="Views\klants\Edit.cshtml" />
+    <Content Include="Views\klants\Index.cshtml" />
+    <Content Include="Views\medewerkers\Edit.cshtml" />
+    <Content Include="Views\medewerkers\Index.cshtml" />
+>>>>>>> e06f72877c26f01dc7004679d46b8157c42137ce
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
