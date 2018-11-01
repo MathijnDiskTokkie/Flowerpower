@@ -1,0 +1,130 @@
+﻿@model List<Flowerpower.Models.winkel>
+@{
+    ViewBag.Title = "Contact";
+}
+@*<div class="contact-row" id="columns">
+    @foreach (var item in Model)
+    {
+        <div class="column-contact">
+            <div>
+                <div class="col-sm-4 col-centered">
+                    <div class="colom-1">
+
+                        <div class="winkel-naam">
+                            <div class="et_pb_text_inner">
+                                <h4>@item.winkelnaam</h4>
+                            </div>
+                        </div>
+
+                        <div class="winkelstraat-naam">
+                            <div class="winkel-straat-naam">
+                                <p style="text-align: center;">
+                                    @item.winkelstraatnaam
+                                </p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="winkel-postcode">
+                                <p style="text-align: center;">
+                                    @item.winkelpostcode
+                                </p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="winkel-stad">
+                                <p style="text-align: center;">
+                                    @item.winkelstad
+                                </p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="winkel-tel">
+                                <p style="text-align: center;">
+                                    @item.winkeltelefoonnummer
+                                </p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="winkel-e-mail">
+                                <p style="text-align: center;">
+                                    @item.winkelmail
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>*@
+
+
+<div class="contact">
+    @foreach (var item in Model)
+    {
+       <center> <div class="contact1-div">
+            <div class="round-img-div" style="background-color: #e6f7ff; width: 65%;">
+                <div class="row" style="background-color: #99cc00;">
+                    <div class="col-sm-3">
+                        <img src="@Url.Content("~/Content/Images/Location/amsterdam.jpg")" class="img-responsive" />
+                    </div>
+                    <div class="col-sm-6" id="contact-blok" style="color: #000;">
+                        <div class="winkel-naam">
+                            <div class="et_pb_text_inner">
+                                <h4>@item.winkelnaam</h4>
+                            </div>
+                        </div>
+
+                        <div  class="contact-gegevens" style="text-align: left;">
+                        <div class="winkelstraat-naam">
+                            <div class="winkel-straat-naam">
+                                <p style="text-align: center;">
+                                    @item.winkelstraatnaam
+                                </p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="winkel-postcode">
+                                <p style="text-align: center;">
+                                    @item.winkelpostcode
+                                </p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="winkel-stad">
+                                <p style="text-align: center;">
+                                    @item.winkelstad
+                                </p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="winkel-tel">
+                                <p style="text-align: center;">
+                                    @item.winkeltelefoonnummer
+                                </p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="winkel-e-mail">
+                                <p style="text-align: center;">
+                                    @item.winkelmail
+                                </p>
+                            </div>
+                        </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></center>
+    }
+</div>

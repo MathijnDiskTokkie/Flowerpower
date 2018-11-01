@@ -1,0 +1,98 @@
+﻿@using FlowerPower.Controllers;
+@model Flowerpower.Models.Winkelwagen
+
+
+@{
+    ViewBag.Title = "Winkelwagen";
+
+
+}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<h2>Winkelwagen</h2>
+
+<script type="text/javascript">
+
+    function deleteitem(productid) {
+        location.href = '@Url.Action("DeleteItem", "Winkelwagen")?productid=' + productid;
+    }
+
+
+</script>
+
+   
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table">
+                    <tr>
+                        <th>Item</th>
+
+                        <th>Omschrijving</th>
+
+                        <th>Prijs</th>
+
+                        <th>Aantal</th>
+
+                        <th>Subtotaal</th>
+                    </tr>
+
+                    @using (Html.BeginForm("Index", "Winkelwagen", FormMethod.Post))
+                    {
+                       
+                            for (int i = 0; i < Model.winkelwagen.Count; i++)
+                            {
+                    <tr>
+
+                        <td></td>
+                        <td>@Model.winkelwagen[i].producten.productomschrijving</td>
+                        <td>@Model.winkelwagen[i].producten.prijs</td>
+                        <td>@Html.EditorFor(model => model.winkelwagen[i].aantal)</td>
+                        <td>@(Model.winkelwagen[i].aantal * Model.winkelwagen[i].producten.prijs)</td>
+                        <td>
+                            <button type="submit" class="btn btn-success">Opslaan</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="@("return deleteitem('"+Model.winkelwagen[i].productid+"')")"><i style="color: #fff" class="far fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                            }
+
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><h5 style="font-weight: bold">TOTAAL </h5></td>
+
+
+                        <td>
+                            <h5 style="font-weight: bold">@Model.totaal</h5>
+                        </td>
+                    </tr>
+                        
+
+                    }
+
+                </table>
+            </div>
+        </div>
+    
+
+<div class="row" style="margin-top: 20px;">
+
+        <div class="col-sm-6">
+
+
+
+        </div>
+        <div class="col-sm-6">
+
+            <a href="@Url.Action("PlaatsDatumKiezen", "Winkelwagen", new { bestelid = Model.winkelwagen.FirstOrDefault().bestellingid }, null)"><button type="button" class="btn btn-success" style="float: right;">Afronden</button></a>
+
+
+        </div>
+    </div>
+
+

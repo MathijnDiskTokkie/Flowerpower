@@ -1,0 +1,136 @@
+﻿@model List<Flowerpower.Models.producten>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<div class="row" id="columns">
+    @foreach (var item in Model)
+    {
+        <div class="columtest">
+            <div>
+                <div class="col-sm-4 col-centered">
+                    <div class="colom-1">
+                        <div class="img-boeket1">
+                            <span class="et_pb_image_wrap">
+                                <img src="@item.url"style="height: 240px; width: 240px;">
+
+                            </span>
+                        </div>
+
+                        <div class="type-titel">
+                            <div class="et_pb_text_inner">
+                                <h4>@item.productnaam</h4>
+                            </div>
+                        </div>
+
+                        <div class="omschrijving-boeket">
+                            <div class="type-boeket-omschrijving">
+                                <p style="text-align: center;">
+                                    @item.productomschrijving
+                                </p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="boeket-prijs">
+                                <p style="text-align: center;">
+                                    € @item.prijs
+                                </p>
+
+                            </div>
+                        </div>
+                        <div>
+                            <div class="aantal-bloemen">
+                                @*<form action="/action_page.php">
+                                        <input type="number" name="quantity" min="0" max="25">
+                                    </form>*@
+                            </div>
+                        </div>
+
+
+                        <a class="btn btn-warning fas fa-shopping-cart " style="color: #fff;"
+                           @Html.ActionLink(" winkelwagen", "Index", "Winkelwagen", new { productid = item.productid, winkelid = 1 }, null)
+                           @*<a class="btn btn-success" style="color: #000;"><i class="fas fa-shopping-cart"></i> Bestel nu vanaf €@item.prijs</a>*@
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+</div>
+
+
+<div class="container-fluid" id="bloem-div-container">
+    <div><center><h1 style="font-family: Rajdhani;">Hoe bestel je een boeket?</h1></center></div>
+    <div class="row" style="padding-top: 70px;">
+
+        <div class="col-sm-3" id="adres-blok">
+            <div>
+                <center> <img src="~/Content/Images/24.png" style="width: 120px; height: auto;" /></center>
+                <h4 class="bloem-h4" style="padding: 5px;">Bestel voor 24 uur</h4>
+            </div>
+        </div>
+
+        <div class="col-sm-3" id="adres-blok">
+            <div>
+                <center><img src="~/Content/Images/boeket.png" class="bloem-block-img" /></center>
+                <h4 class="bloem-h4" style="padding: 5px;">Kies een boeket</h4>
+            </div>
+        </div>
+
+        <div class="col-sm-3" id="adres-blok">
+            <div>
+                <center><img src="~/Content/Images/locatie.png" class="bloem-block-img" /></center>
+                <h4 class="bloem-h4" style="padding: 5px;">Kies een locatie om te ophalen</h4>
+            </div>
+        </div>
+
+        <div class="col-sm-3" id="adres-blok">
+            <div>
+                <center><img src="~/Content/Images/betalen.png" class="bloem-block-img" /></center>
+                <h4 class="bloem-h4" style="padding: 5px;">Betaal aan de balie</h4>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<div class="flowerpower-div">
+    <div class="round-img-div" style="background-color:	 #ffd633;">
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="@Url.Content("~/Content/Images/flower.png")" class="img-responsive" />
+            </div>
+
+            <div class="col-sm-6" style="text-align: center;" id="flowerpover-div">
+                <h2 style="font-family: Courgette, cursive; font-size: 50px;">FlowerPower</h2><br />
+                <p>
+                    Welkom op de site van FlowerpPower<br />
+                    Sinds 1994 is FlowerPower de duren open gemaakt in het hartje van Amsterdam.
+                </p>
+
+                <p>
+                    Door de jaren heen is FlowerPower uitgegroeid tot een keten van bloemenwinkels in Amsterdam, Den Haag, Rotterdam en Utrecht.<br />
+                    In de toekomst verwacht FlowerPower meerdere bloemenwinkels te openen in de randstad.
+                </p>
+
+                <p>
+                    U kunt bij ons terecht voor al uw wensen op het gebied van bloemsierkunst.<br />
+                    Met een gemotiveerd team staan wij garant voor een goede service voor onze klanten!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

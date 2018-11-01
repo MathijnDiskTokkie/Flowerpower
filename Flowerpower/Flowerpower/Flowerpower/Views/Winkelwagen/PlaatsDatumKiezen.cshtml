@@ -1,0 +1,53 @@
+﻿@model Flowerpower.Models.PlaatsDatumModel
+
+@{
+    ViewBag.Title = "Winkel en datum kiezen";
+}
+
+<h2>Winkel en datum kiezen</h2>
+
+    <script type="text/javascript">
+        
+        function showfile() {
+            var link = '@Url.Action("AfrondenFile","Winkelwagen", new {bestelidd = "-1" })';
+            link = link.replace("-1", @Model.bestellingid + "");
+            window.open(link);
+
+
+        }
+
+        
+    </script>
+
+
+
+    @using (Html.BeginForm("PlaatsDatumKiezen","Winkelwagen", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-sm-6">
+
+                <h4 style="color: black">Wanneer wilt u uw boeket ophalen?</h4>
+
+                <div>
+                    @Html.HiddenFor(m => m.bestellingid)
+                    @Html.EditorFor(modeld => modeld.datumgekozen, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                    @Html.ValidationMessageFor(modeld => modeld.datumgekozen, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+           
+
+
+            <div class="col-sm-6">
+                <h4 style="color: black">Waar wilt u uw boeket ophalen?</h4>
+                @Html.DropDownListFor(m => m.Winkelcode, Model.winkels, "Selecteer winkel")
+                <input type="submit" id="click" class="btn-success"  onclick="return showfile();" value="Ga door" />
+
+
+            </div>
+        </div>
+    }
+
+
+
+

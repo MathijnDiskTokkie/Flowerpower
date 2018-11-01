@@ -1,0 +1,62 @@
+﻿
+
+<div class="navbar navbar-light">
+
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="navbar-header pull-left">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                <img src="~/Content/Images/logoo.png" alt="Site Logo" id="site-logo" class="img-responsive" />
+            </a>
+        </div>
+
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                @if (ViewContext.HttpContext.User.IsInRole("Manager"))
+                {
+                    <ul class="nav navbar-nav nav navbar-nav navbar-left" style=" position: absolute; right: 41%;">
+
+                        @if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().Equals("Home"))
+                        {
+                            <li>@Html.ActionLink("Boeketten", "index", "Boeketten")</li>
+                            <li>@Html.ActionLink("Winkels", "index", "Winkels")</li>
+                            <li>@Html.ActionLink("Roles", "index", "Roles")</li>
+                            <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                            <li>@Html.ActionLink("Klanten", "index", "Klants")</li>
+                            <li>@Html.ActionLink("Medewerkers", "index", "Medewerkers")</li>
+
+                        }
+                        else
+                        {
+                            <ul class="nav navbar-nav nav " style=" right: 41%;">
+                                <li>@Html.ActionLink("Home", "index", "Home")</li>
+                                <li>@Html.ActionLink("Boeketten", "index", "Boeketten")</li>
+                                <li>@Html.ActionLink("Winkels", "index", "Winkels")</li>
+                                <li>@Html.ActionLink("Roles", "index", "Roles")</li>
+                                <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                <li>@Html.ActionLink("Klanten", "index", "Klants")</li>
+                                <li>@Html.ActionLink("Medewerkers", "index", "Medewerkers")</li>
+                            </ul>
+                        }
+                    </ul>
+                }
+
+            </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+

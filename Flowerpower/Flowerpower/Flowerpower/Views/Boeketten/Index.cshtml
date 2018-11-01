@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Flowerpower.Models.producten>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.productnaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prijs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.productomschrijving)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gearchiveerd)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.productnaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prijs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.productomschrijving)
+        </td>
+        <td>
+            @Html.EditorFor(modelItem => item.gearchiveerd)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.productid }) |
+            @Html.ActionLink("Details", "Details", new { id = item.productid }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.productid })
+        </td>
+    </tr>
+}
+
+</table>

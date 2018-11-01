@@ -1,0 +1,80 @@
+﻿@model Flowerpower.Models.winkel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>winkel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.winkelnaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.winkelnaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.winkelstraatnaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.winkelstraatnaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.winkelpostcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.winkelpostcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.winkelstad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.winkelstad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.winkeltelefoonnummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.winkeltelefoonnummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.winkelmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.winkelmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.winkelactief)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.winkelactief)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,66 @@
+﻿@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@using System.Web;
+@using System.Web.Mvc;
+@using Flowerpower.Models;
+@using Flowerpower.Controllers;
+@model Flowerpower.Models.bestelling
+
+
+@{
+    ViewBag.Title = "Afronden";
+}
+
+
+
+<style>
+
+    table.td {
+    
+    color: white;
+    }
+    table.th {
+    color: white;
+    }
+    p {
+    color: white;}
+
+    h3 {
+    color:white;}
+
+</style>
+
+<div class="jumbotron" style="background-color: green">
+
+    <h3>Bestelling is afgerond!</h3>
+    <p style="color: white;">
+        Uw bestelling is in goede handen ontvangen. U dient uw bestelling bij de volgende gegevens op te halen. Neem uw factuur
+        mee tijdens het ophalen van de bestelling. Dit is uw bestellingbewijs!
+    </p>
+
+    <br />
+    <table class="table" style="color: white;">
+        <tr>
+            <th>Bestelnummer</th>
+            <th>Plaats</th>
+            <th>Datum</th>
+        </tr>
+        <tr>
+            <td>@Model.bestellingid</td>
+            <td>@Model.winkel.winkelstad</td>
+            <td>@Model.bestellinggeplaatst</td>
+        </tr>
+
+
+    </table>
+
+    <br />
+    <a href="@Url.Action("Index","Home")"><button type="button" class="btn btn-primary">Oke</button></a>
+
+
+</div>
+
+
+
+

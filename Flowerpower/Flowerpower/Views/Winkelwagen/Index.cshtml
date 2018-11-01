@@ -13,6 +13,15 @@
 
 <h2>Winkelwagen</h2>
 
+<script type="text/javascript">
+
+    function deleteitem(productid) {
+        location.href = '@Url.Action("DeleteItem", "Winkelwagen")?productid=' + productid;
+    }
+
+
+</script>
+
    
         <div class="row">
             <div class="col-sm-12">
@@ -45,9 +54,7 @@
                             <button type="submit" class="btn btn-success">Opslaan</button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-danger" onclick="@{
-                              ((WinkelwagenController)this.ViewContext.Controller).deleteItem(Model.winkelwagen[i].productid);
-                            }"><i style="color: #fff" class="far fa-trash-alt"></i></button>
+                            <button type="button" class="btn btn-danger" onclick="@("return deleteitem('"+Model.winkelwagen[i].productid+"')")"><i style="color: #fff" class="far fa-trash-alt"></i></button>
                         </td>
                     </tr>
                             }

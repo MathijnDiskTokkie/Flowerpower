@@ -1,0 +1,56 @@
+﻿@model Flowerpower.Models.producten
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>producten</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.productnaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productnaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prijs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prijs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productomschrijving)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productomschrijving)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gearchiveerd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gearchiveerd)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

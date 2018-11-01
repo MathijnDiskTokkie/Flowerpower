@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Flowerpower.Models.bestelling>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.winkelcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.klant_klantid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bestellinggeplaatst)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.klant.naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.medewerkers.medewerkernaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.winkel.winkelnaam)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.winkelcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.klant_klantid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bestellinggeplaatst)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.klant.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.medewerkers.medewerkernaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.winkel.winkelnaam)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.bestellingid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.bestellingid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.bestellingid })
+        </td>
+    </tr>
+}
+
+</table>
